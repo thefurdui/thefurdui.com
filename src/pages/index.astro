@@ -1,144 +1,121 @@
 ---
-import '../styles/reset.css'
-import '../styles/theme.css'
-import '../styles/layout.css'
-import '../styles/utils.css'
-import '../styles/generics.css'
+import BaseLayout from '../layouts/RootLayout.astro'
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Andrei Furdui - Product Engineer</title>
-  </head>
-  <body>
-    <main>
-      <section id="hero">
-        <h1>Andrei Furdui</h1>
-        <span>Product Engineer</span>
-        <p>I ship products fast.</p>
-      </section>
+<BaseLayout title="Andrei Furdui - Product Engineer" description="I ship products fast.">
+  <section id="hero">
+    <h1>Andrei Furdui</h1>
+    <span>Product Engineer</span>
+    <p>I ship products fast.</p>
+  </section>
 
-      <section id="principles">
-        <h2>Principles</h2>
-        <ul>
-          <li>Less is more</li>
-          <li>Consistency beats intensity</li>
-          <li>Perfectionism kills startups</li>
-          <li>Code is a liability. Keep it minimal</li>
-          <li><a href="/blog/tech-debt-leverage">Tech debt is leverage</a> if the interest doesn't compound</li>
-        </ul>
-      </section>
+  <section id="principles">
+    <h2>Principles</h2>
+    <ul>
+      <li>Less is more</li>
+      <li>Consistency beats intensity</li>
+      <li>Perfectionism kills startups</li>
+      <li>Code is a liability. Keep it minimal</li>
+      <li><a href="/blog/tech-debt-leverage">Tech debt is leverage</a> if the interest doesn't compound</li>
+    </ul>
+  </section>
 
-      <section id="work">
-        <h2>Selected Work</h2>
-        <ul>
-          <li>
-            <strong><a target="_blank" rel="noopener noreferrer" href="https://lode.my">Lode Ecosystem</a>: </strong>A
-            suite of apps for meticulous self-quantification. You are what you measure
-          </li>
-          <li>
-            <strong><a target="_blank" rel="noopener noreferrer" href="https://arcoin.net">ARCOIN</a>: </strong>A
-            geolocation-based AR metaverse. Peak scale: 120k MAU
-          </li>
-          <li>
-            <strong><a target="_blank" rel="noopener noreferrer" href="https://beamcss.org">BEAM CSS</a>: </strong>A
-            strict, semantic, browser-native CSS architecture. The antidote to Atomic CSS and CSS-in-JS
-          </li>
-          <li>
-            <strong
-              ><a target="_blank" rel="noopener noreferrer" href="https://github.com/thefurdui/hap">hap</a>:
-            </strong>A CLI tool to orchestrate parallel AI agents across different Git branches within the same repo
-          </li>
-          <li>
-            <strong
-              ><a target="_blank" rel="noopener noreferrer" href="https://github.com/thefurdui/wic">wic</a>:
-            </strong>A CLI tool to compile wide-gamut (Display P3) web assets natively via headless Chromium
-          </li>
-          <li>
-            <strong>
-              <a target="_blank" rel="noopener noreferrer" href="https://www.saboit.de/references/audi-dpa">Audi DPA</a
-              >:
-            </strong>
-            Enterprise IIoT infrastructure. A 3D assembly line and resource planner built for Audi and Volkswagen factories
-          </li>
-        </ul>
-      </section>
+  <section id="work">
+    <h2>Selected Work</h2>
+    <ul>
+      <li>
+        <strong><a target="_blank" rel="noopener noreferrer" href="https://lode.my">Lode Ecosystem</a>: </strong>A suite
+        of apps for meticulous self-quantification. You are what you measure
+      </li>
+      <li>
+        <strong><a target="_blank" rel="noopener noreferrer" href="https://arcoin.net">ARCOIN</a>: </strong>A
+        geolocation-based AR metaverse. Peak scale: 120k MAU
+      </li>
+      <li>
+        <strong><a target="_blank" rel="noopener noreferrer" href="https://beamcss.org">BEAM CSS</a>: </strong>A strict,
+        semantic, browser-native CSS architecture. The antidote to Atomic CSS and CSS-in-JS
+      </li>
+      <li>
+        <strong><a target="_blank" rel="noopener noreferrer" href="https://github.com/thefurdui/hap">hap</a>: </strong>A
+        CLI tool to orchestrate parallel AI agents across different Git branches within the same repo
+      </li>
+      <li>
+        <strong><a target="_blank" rel="noopener noreferrer" href="https://github.com/thefurdui/wic">wic</a>: </strong>A
+        CLI tool to compile wide-gamut (Display P3) web assets natively via headless Chromium
+      </li>
+      <li>
+        <strong>
+          <a target="_blank" rel="noopener noreferrer" href="https://www.saboit.de/references/audi-dpa">Audi DPA</a>:
+        </strong>
+        Enterprise IIoT infrastructure. A 3D assembly line and resource planner built for Audi and Volkswagen factories
+      </li>
+    </ul>
+  </section>
 
-      <section id="bio">
-        <h2>Bio</h2>
-        <ul>
-          <li>
-            2002 - Born in Chișinău, Moldova <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.google.com/maps/place/Chi%C8%99in%C4%83u,+Moldova/@47.0131285,28.7739849,11.88z/data=!4m15!1m8!3m7!1s0x40c97c3628b769a1:0x258119acdf53accb!2sMoldova!3b1!8m2!3d47.411631!4d28.369885!16zL20vMDR3NHM!3m5!1s0x40c97c3628b769a1:0x37d1d6305749dd3c!8m2!3d47.0104529!4d28.8638102!16zL20vMGZuNzc?entry=ttu&g_ep=EgoyMDI2MDYwMy4xIKXMDSoASAFQAw%3D%3D"
-              >[where?]</a
-            >
-            (0yo)
-          </li>
-          <li>2009 - Started tinkering with Linux and custom Android ROMs (7yo)</li>
-          <li>2016 - Started coding in Python (14yo)</li>
-          <li>2017 - Built a Unity mobile game (15yo)</li>
-          <li>
-            2018 - Landed my first freelance gig. Implemented extreme Qubes OS opsec setup for a privacy-focused client
-            (16yo)
-          </li>
-          <li>2019 - Secured a 6-month frontend contract with a governmental hosting provider in Kazakhstan (17yo)</li>
-          <li>2020 - Moved to Prague the morning after I became a legal adult (18yo)</li>
-          <li>
-            2021-2023 - Developed Audi & Volkswagen assembly line planner apps + other enterprise IIoT systems (18-21yo)
-          </li>
-          <li>
-            2024 - Founded an <a target="_blank" rel="noopener noreferrer" href="https://arcoin.net/"
-              >AR/Crypto startup</a
-            >. Raised $100k (21yo). Managed a team of 6
-          </li>
-          <li>
-            2025 - Moved to Tashkent <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.google.com/maps/place/Tashkent,+Uzbekistan/@41.2827379,69.1145598,11z/data=!3m1!4b1!4m6!3m5!1s0x38ae8b0cc379e9c3:0xa5a9323b4aa5cb98!8m2!3d41.2982211!4d69.2385223!16zL20vMGZzbXk?entry=ttu&g_ep=EgoyMDI2MDYwMy4xIKXMDSoASAFQAw%3D%3D"
-              >[where?]</a
-            >
-            with my girlfriend. Closed the startup. <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="/arcoin-experience">Learned from pain</a
-            > (22yo)
-          </li>
-          <li>
-            2026 - Started using Neovim, btw. Optimizing my "system of being" with <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="/lode-101">Lode</a
-            > (23yo)
-          </li>
-          <li><i>typing...</i></li>
-        </ul>
-      </section>
+  <section id="bio">
+    <h2>Bio</h2>
+    <ul>
+      <li>
+        2002 - Born in Chișinău, Moldova <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.google.com/maps/place/Chi%C8%99in%C4%83u,+Moldova/@47.0131285,28.7739849,11.88z/data=!4m15!1m8!3m7!1s0x40c97c3628b769a1:0x258119acdf53accb!2sMoldova!3b1!8m2!3d47.411631!4d28.369885!16zL20vMDR3NHM!3m5!1s0x40c97c3628b769a1:0x37d1d6305749dd3c!8m2!3d47.0104529!4d28.8638102!16zL20vMGZuNzc?entry=ttu&g_ep=EgoyMDI2MDYwMy4xIKXMDSoASAFQAw%3D%3D"
+          >[where?]</a
+        >
+        (0yo)
+      </li>
+      <li>2009 - Started tinkering with Linux and custom Android ROMs (7yo)</li>
+      <li>2016 - Started coding in Python (14yo)</li>
+      <li>2017 - Built a Unity mobile game (15yo)</li>
+      <li>
+        2018 - Landed my first freelance gig. Implemented extreme Qubes OS opsec setup for a privacy-focused client
+        (16yo)
+      </li>
+      <li>2019 - Secured a 6-month frontend contract with a governmental hosting provider in Kazakhstan (17yo)</li>
+      <li>2020 - Moved to Prague the morning after I became a legal adult (18yo)</li>
+      <li>
+        2021-2023 - Developed Audi & Volkswagen assembly line planner apps + other enterprise IIoT systems (18-21yo)
+      </li>
+      <li>
+        2024 - Founded an <a target="_blank" rel="noopener noreferrer" href="https://arcoin.net/">AR/Crypto startup</a>.
+        Raised $100k (21yo). Managed a team of 6
+      </li>
+      <li>
+        2025 - Moved to Tashkent <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.google.com/maps/place/Tashkent,+Uzbekistan/@41.2827379,69.1145598,11z/data=!3m1!4b1!4m6!3m5!1s0x38ae8b0cc379e9c3:0xa5a9323b4aa5cb98!8m2!3d41.2982211!4d69.2385223!16zL20vMGZzbXk?entry=ttu&g_ep=EgoyMDI2MDYwMy4xIKXMDSoASAFQAw%3D%3D"
+          >[where?]</a
+        >
+        with my girlfriend. Closed the startup. <a target="_blank" rel="noopener noreferrer" href="/arcoin-experience"
+          >Learned from pain</a
+        > (22yo)
+      </li>
+      <li>
+        2026 - Started using Neovim, btw. Optimizing my "system of being" with <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="/lode-101">Lode</a
+        > (23yo)
+      </li>
+      <li><i>typing...</i></li>
+    </ul>
+  </section>
 
-      <section id="contact">
-        <h2>Contact</h2>
-        <ul>
-          <li>Email: <a href="mailto:andrei@thefurdui.com">andrei@thefurdui.com</a></li>
-          <li>
-            Calendar: <a target="_blank" rel="noopener noreferrer" href="https://cal.com/thefurdui/15min"
-              >cal.com/thefurdui/15min</a
-            >
-          </li>
-          <li>
-            GitHub: <a target="_blank" rel="noopener noreferrer" href="https://github.com/thefurdui"
-              >github.com/thefurdui</a
-            >
-          </li>
-          <li>X: <a target="_blank" rel="noopener noreferrer" href="https://x.com/thefurdui">x.com/thefurdui</a></li>
-        </ul>
-      </section>
-    </main>
-  </body>
-</html>
+  <section id="contact">
+    <h2>Contact</h2>
+    <ul>
+      <li>Email: <a href="mailto:andrei@thefurdui.com">andrei@thefurdui.com</a></li>
+      <li>
+        Calendar: <a target="_blank" rel="noopener noreferrer" href="https://cal.com/thefurdui/15min"
+          >cal.com/thefurdui/15min</a
+        >
+      </li>
+      <li>
+        GitHub: <a target="_blank" rel="noopener noreferrer" href="https://github.com/thefurdui">github.com/thefurdui</a
+        >
+      </li>
+      <li>X: <a target="_blank" rel="noopener noreferrer" href="https://x.com/thefurdui">x.com/thefurdui</a></li>
+    </ul>
+  </section>
+</BaseLayout>
