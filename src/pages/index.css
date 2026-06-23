@@ -155,19 +155,10 @@
   letter-spacing: -0.03em;
 }
 
-.home_page-tagline {
-  color: var(--ink-main);
-  font-family: var(--font-heading);
-  font-size: fluid(var(--text-xl), var(--text-3xl));
-  font-weight: var(--weight-medium);
-  line-height: var(--leading-tight);
-}
-
 .home_page-hero_lead {
-  max-width: 52ch;
-  color: var(--ink-muted);
-  font-size: var(--text-base);
-  line-height: var(--leading-relaxed);
+  color: var(--ink-main);
+  font-size: fluid(var(--text-xl), var(--text-3xl));
+  line-height: var(--leading-tight);
 }
 
 /* -------------------------------------------------------------------------- */
