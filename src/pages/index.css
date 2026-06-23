@@ -8,15 +8,20 @@
 .home_page {
   /* Component API (Layer 4) — local structural constants. */
   --c-frame-max: 64rem;
+  --c-frame-margin: max(
+    calc(var(--c-page-padding) + calc(var(--js-scrollbar-width) / 2)),
+    calc(calc(100vw - var(--c-frame-max)) / 2)
+  );
+
   --c-hairline: 1px;
-  --c-mark: var(--ink-faint); /* registration cross ink */
-  --c-mark-size: 0.625rem;
   --c-graph: color-mix(in srgb, var(--border-base), transparent 35%); /* faint graph-paper line, derived from token */
   --c-graph-cell: 2.5rem;
   --c-bio-rail: 6.5rem;
+  --c-page-padding: fluid(var(--space-4), var(--space-8));
+  --c-section-border: var(--c-hairline) solid var(--border-base);
 
   min-height: 100dvh;
-  padding-inline: fluid(var(--space-4), var(--space-8));
+  padding: var(--c-page-padding);
   color: var(--ink-main);
 }
 
@@ -36,48 +41,77 @@ html,
   border: var(--c-hairline) solid var(--border-base);
 }
 
+.home_page-rails::before,
+.home_page-rails::after {
+  --c-rail-border-y-offset: calc(var(--c-frame-margin) - var(--js-scrollbar-width) / 2);
+
+  content: '';
+  position: fixed;
+  left: calc(var(--c-frame-margin) - var(--js-scrollbar-width) / 2);
+  top: calc(var(--c-page-padding) * -1);
+  bottom: calc(var(--c-page-padding) * -1);
+  border-left: var(--c-section-border);
+}
+
+.home_page-rails::after {
+  left: unset;
+  right: calc(var(--c-frame-margin) + var(--js-scrollbar-width) / 2);
+}
+
 /* -------------------------------------------------------------------------- */
 /* REGISTRATION CROSSES — the "+" marks at every rail/divider intersection.    */
 /* Each "+" is two crossing 1px gradients painted on a single pseudo-element.  */
 /* Section pseudos mark every top corner (frame top + all dividers); the rails */
 /* pseudos close the two bottom corners. No empty divs touch the markup.       */
 /* -------------------------------------------------------------------------- */
-.home_page-section::before,
-.home_page-section::after,
-.home_page-rails::before,
-.home_page-rails::after {
+
+.home_page-registration_mark_anchor {
+  --c-mark-color: var(--ink-faint); /* registration cross ink */
+  --c-mark-size: 0.75rem;
+
+  width: 100%;
+  pointer-events: none;
+}
+
+.home_page-registration_mark_anchor::before,
+.home_page-registration_mark_anchor::after {
+  --c-mark-offset: calc(var(--c-hairline) / 2);
+  --c-mark-translate-y: calc(-50% - var(--c-mark-offset));
+
   content: '';
   position: absolute;
+  top: 0;
   width: var(--c-mark-size);
   height: var(--c-mark-size);
-  background-image: linear-gradient(var(--c-mark), var(--c-mark)), linear-gradient(var(--c-mark), var(--c-mark));
+  border: solid 4px var(--bg-page);
+  box-sizing: content-box;
+  background-image:
+    linear-gradient(var(--c-mark-color), var(--c-mark-color)), linear-gradient(var(--c-mark-color), var(--c-mark-color));
   background-position: center, center;
   background-size:
     100% var(--c-hairline),
     var(--c-hairline) 100%;
   background-repeat: no-repeat;
   pointer-events: none;
+  z-index: var(--z-pinned);
 }
 
-.home_page-section::before {
-  top: 0;
+.home_page-registration_mark_anchor::before {
   left: 0;
-  transform: translate(-50%, -50%);
+  transform: translate(calc(-50% - var(--c-mark-offset)), var(--c-mark-translate-y));
 }
-.home_page-section::after {
-  top: 0;
+
+.home_page-registration_mark_anchor::after {
   right: 0;
-  transform: translate(50%, -50%);
+  transform: translate(calc(50% + var(--c-mark-offset)), var(--c-mark-translate-y));
 }
-.home_page-rails::before {
+
+.home_page-registration_mark_anchor:last-of-type::before,
+.home_page-registration_mark_anchor:last-of-type::after {
+  --c-mark-translate-y: calc(50% + var(--c-mark-offset));
+
+  top: unset;
   bottom: 0;
-  left: 0;
-  transform: translate(-50%, 50%);
-}
-.home_page-rails::after {
-  bottom: 0;
-  right: 0;
-  transform: translate(50%, 50%);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -90,7 +124,22 @@ html,
 }
 
 .home_page-section:not(:last-child) {
-  border-bottom: var(--c-hairline) solid var(--border-base);
+  border-bottom: var(--c-section-border);
+}
+
+.home_page-section::before,
+.home_page-section:last-of-type::after {
+  content: '';
+  position: absolute;
+  top: calc(var(--c-hairline) * -1);
+  left: calc(var(--c-frame-margin) * -1);
+  width: 100vw;
+  border-bottom: var(--c-section-border);
+}
+
+.home_page-section:last-of-type::after {
+  top: unset;
+  bottom: calc(var(--c-hairline) * -1);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -135,6 +184,7 @@ html,
     linear-gradient(to right, var(--c-graph) var(--c-hairline), transparent var(--c-hairline)),
     linear-gradient(to bottom, var(--c-graph) var(--c-hairline), transparent var(--c-hairline));
   background-size: var(--c-graph-cell) var(--c-graph-cell);
+  background-position: calc(var(--c-hairline) * -1);
 }
 
 .home_page-hero_tag {
@@ -282,10 +332,6 @@ html,
 }
 
 .work_card-desc {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  overflow: hidden;
   color: var(--ink-muted);
   font-size: var(--text-sm);
   line-height: var(--leading-base);

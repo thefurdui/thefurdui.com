@@ -5,6 +5,7 @@ import '../styles/layout.css'
 import '../styles/utils.css'
 import '../styles/generics.css'
 import '../styles/fonts.css'
+import './RootLayout.css'
 
 interface Props {
   title: string
@@ -42,5 +43,17 @@ const { title, description } = Astro.props
     <main class="root_layout-main">
       <slot />
     </main>
+    <script>
+      function calculateScrollbarWidth() {
+        const rootLayout = document.querySelector('.root_layout')
+        if (!rootLayout) return
+
+        const scrollbarWidth = window.innerWidth - rootLayout.clientWidth
+        document.documentElement.style.setProperty('--js-scrollbar-width', `${scrollbarWidth}px`)
+      }
+
+      calculateScrollbarWidth()
+      window.addEventListener('resize', calculateScrollbarWidth)
+    </script>
   </body>
 </html>
