@@ -1,10 +1,4 @@
-/* ========================================================================== */
-/* index.css
-/* Block: .home_page (route block) + co-located .work_card block.
-/* "Architectural Blueprint" aesthetic — exposed structure, registration
-/* crosses, and technical spec-sheet typography. Consumes Layer 3 semantics.
-/* ========================================================================== */
-
+/* CORE */
 .home_page {
   /* Component API (Layer 4) — local structural constants. */
   --c-frame-max: 64rem;
@@ -30,10 +24,7 @@ html,
   background: var(--bg-page);
 }
 
-/* -------------------------------------------------------------------------- */
-/* THE FRAME — vertical structural rails (the "infinite" blueprint column).   */
-/* The 1px box draws the bounding lines; sections draw the internal dividers.  */
-/* -------------------------------------------------------------------------- */
+/* FRAME */
 .home_page-rails {
   position: relative;
   max-width: var(--c-frame-max);
@@ -58,15 +49,9 @@ html,
   right: calc(var(--c-frame-margin) + var(--js-scrollbar-width) / 2);
 }
 
-/* -------------------------------------------------------------------------- */
-/* REGISTRATION CROSSES — the "+" marks at every rail/divider intersection.    */
-/* Each "+" is two crossing 1px gradients painted on a single pseudo-element.  */
-/* Section pseudos mark every top corner (frame top + all dividers); the rails */
-/* pseudos close the two bottom corners. No empty divs touch the markup.       */
-/* -------------------------------------------------------------------------- */
-
+/* REGISTRATION MARK */
 .home_page-registration_mark_anchor {
-  --c-mark-color: var(--ink-faint); /* registration cross ink */
+  --c-mark-color: var(--ink-faint);
   --c-mark-size: 0.75rem;
 
   width: 100%;
@@ -114,9 +99,7 @@ html,
   bottom: 0;
 }
 
-/* -------------------------------------------------------------------------- */
-/* SECTIONS — structural slabs separated by horizontal dividers.              */
-/* -------------------------------------------------------------------------- */
+/* SECTION BLOCK */
 .home_page-section {
   position: relative;
   padding-block: fluid(var(--space-10), var(--space-16));
@@ -142,9 +125,6 @@ html,
   bottom: calc(var(--c-hairline) * -1);
 }
 
-/* -------------------------------------------------------------------------- */
-/* SECTION HEADER — index + title + meta, underlined like a spec sheet.        */
-/* -------------------------------------------------------------------------- */
 .home_page-section_head {
   padding-bottom: var(--space-4);
   border-bottom: var(--c-hairline) solid var(--border-base);
@@ -174,9 +154,7 @@ html,
   letter-spacing: 0.12em;
 }
 
-/* -------------------------------------------------------------------------- */
-/* HERO — stark masthead over a faint graph-paper field.                       */
-/* -------------------------------------------------------------------------- */
+/* HERO SECTION */
 .home_page-section[data-region='hero'] {
   padding-block: fluid(var(--space-16), var(--space-24));
   background-color: var(--bg-page);
@@ -213,9 +191,7 @@ html,
   line-height: var(--leading-tight);
 }
 
-/* -------------------------------------------------------------------------- */
-/* PRINCIPLES — a lined technical register.                                    */
-/* -------------------------------------------------------------------------- */
+/* PRINCIPLES SECTION */
 .home_page-principle {
   padding-block: var(--space-3);
 }
@@ -239,11 +215,7 @@ html,
   line-height: var(--leading-base);
 }
 
-/* -------------------------------------------------------------------------- */
-/* SELECTED WORK — 3 x 2 grid of technical spec sheets.                        */
-/* Single 1px gridlines: every card paints top + left; the right column and    */
-/* bottom row close the frame. Hover lifts a focus ring without moving layout. */
-/* -------------------------------------------------------------------------- */
+/* SELECTED WORK SECTION */
 .work_card {
   position: relative;
   display: flex;
@@ -320,7 +292,6 @@ html,
   text-decoration: none;
 }
 
-/* Stretched hit-area: the whole card routes to the project. */
 .work_card-link::after {
   content: '';
   position: absolute;
@@ -361,10 +332,7 @@ html,
   transform: translate(0.125rem, -0.125rem);
 }
 
-/* -------------------------------------------------------------------------- */
-/* BIO — a structured technical timeline with a monospaced year rail.          */
-/* The connector line + node are drawn per-entry; segments meet to read whole. */
-/* -------------------------------------------------------------------------- */
+/* BIO SECTION */
 .home_page-bio_entry {
   position: relative;
   padding-block: var(--space-4);
@@ -437,9 +405,7 @@ html,
   }
 }
 
-/* -------------------------------------------------------------------------- */
-/* CONTACT — a lined channel register.                                         */
-/* -------------------------------------------------------------------------- */
+/* CONTACT SECTION */
 .home_page-contact_row {
   padding-block: var(--space-4);
 }
@@ -469,9 +435,7 @@ html,
   color: var(--brand-primary);
 }
 
-/* -------------------------------------------------------------------------- */
-/* INLINE LINKS — anchors inside unclassed prose text (register + timeline).   */
-/* -------------------------------------------------------------------------- */
+/* INLINE LINKS - anchors inside unclassed prose text (register + timeline) */
 .home_page-principle_text a,
 .home_page-bio_desc a {
   color: var(--ink-main);
@@ -486,9 +450,7 @@ html,
   color: var(--brand-primary);
 }
 
-/* -------------------------------------------------------------------------- */
-/* FOCUS — visible keyboard rings.                                             */
-/* -------------------------------------------------------------------------- */
+/* FOCUS - visible keyboard rings */
 .home_page-contact_value:focus-visible,
 .home_page-principle_text a:focus-visible,
 .home_page-bio_desc a:focus-visible {
@@ -497,10 +459,7 @@ html,
   border-radius: var(--radius-sm);
 }
 
-/* -------------------------------------------------------------------------- */
-/* RESPONSIVE — collapse the work grid and tighten the bio rail on small       */
-/* viewports. The work region overrides the global l_grid column count here.   */
-/* -------------------------------------------------------------------------- */
+/* RESPONSIVENESS */
 @media (max-width: 48rem) {
   .home_page-section[data-region='work'] .l_grid {
     grid-template-columns: 1fr;
