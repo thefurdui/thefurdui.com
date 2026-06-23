@@ -38,6 +38,21 @@ const { title, description } = Astro.props
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {description && <meta name="description" content={description} />}
     <title>{title}</title>
+    <meta id="meta-theme-color" name="theme-color" content="" />
+    <script is:inline>
+      // Runs synchronously before first paint to prevent fouc
+      ;(function () {
+        const STORAGE_KEY = 'thefurdui.theme'
+        const DARK_QUERY = '(prefers-color-scheme: dark)'
+        let stored = null
+        try {
+          stored = localStorage.getItem(STORAGE_KEY)
+        } catch (e) {}
+        const pref = stored === 'light' || stored === 'dark' || stored === 'auto' ? stored : 'auto'
+        const active = pref === 'auto' ? (window.matchMedia(DARK_QUERY).matches ? 'dark' : 'light') : pref
+        document.documentElement.setAttribute('data-theme', active)
+      })()
+    </script>
   </head>
   <body class="root_layout">
     <main class="root_layout-main">

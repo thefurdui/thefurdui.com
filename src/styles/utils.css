@@ -72,7 +72,7 @@
  */
 @media (prefers-reduced-motion: no-preference) {
   .u_pressable:active:not([aria-disabled='true']):not([data-loading='true']) {
-    transform: scale(0.97);
-    filter: brightness(0.95);
+    transform: scale(0.9);
+    filter: brightness(0.9);
   }
 }

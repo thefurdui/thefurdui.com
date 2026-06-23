@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/RootLayout.astro'
+import ThemeToggle from '../components/ThemeToggle/ThemeToggle.astro'
 import './index.css'
 ---
 
@@ -13,8 +14,9 @@ import './index.css'
       <section class="home_page-section" data-region="hero">
         <div class="home_page-registration_mark_anchor" aria-hidden="true"></div>
         <div class="l_stack" data-gap="8">
-          <div class="l_cluster" data-justify="between" data-gap="4">
+          <div class="l_cluster" data-justify="between" data-gap="4" data-align="center">
             <span class="home_page-hero_tag">Product Engineer</span>
+            <ThemeToggle />
           </div>
 
           <div class="l_stack" data-gap="5">

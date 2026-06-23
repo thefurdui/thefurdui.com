@@ -218,7 +218,7 @@ html,
   background: var(--bg-surface);
   border-top: var(--c-hairline) solid var(--border-base);
   border-left: var(--c-hairline) solid var(--border-base);
-  border-radius: 0; /* sharp corners — blueprint requirement overrides radius scale */
+  border-radius: 0;
   transition: background var(--duration-fast) var(--ease-standard);
 }
 
@@ -438,7 +438,6 @@ html,
   font-size: var(--text-sm);
   text-decoration: none;
   text-align: right;
-  transition: color var(--duration-fast) var(--ease-standard);
 }
 
 .home_page-contact_value:hover {
@@ -452,7 +451,6 @@ html,
   text-decoration: underline;
   text-decoration-color: var(--border-focus);
   text-underline-offset: 0.2em;
-  transition: color var(--duration-fast) var(--ease-standard);
 }
 
 .home_page-principle_text a:hover,
