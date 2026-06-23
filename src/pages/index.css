@@ -101,9 +101,8 @@
   color: var(--ink-main);
   font-family: var(--font-heading);
   font-size: fluid(var(--text-xl), var(--text-2xl));
-  font-weight: var(--weight-semibold);
   line-height: var(--leading-tight);
-  letter-spacing: -0.01em;
+  letter-spacing: 0.03em;
 }
 
 .home_page-section_index {
@@ -150,9 +149,8 @@
   color: var(--ink-main);
   font-family: var(--font-heading);
   font-size: fluid(var(--text-4xl), var(--text-8xl));
-  font-weight: var(--weight-black);
+  font-weight: var(--weight-regular);
   line-height: var(--leading-none);
-  letter-spacing: -0.03em;
 }
 
 .home_page-hero_lead {
@@ -258,7 +256,6 @@
 
 .work_card-title {
   color: var(--ink-main);
-  font-family: var(--font-heading);
   font-size: var(--text-lg);
   font-weight: var(--weight-semibold);
   line-height: var(--leading-tight);

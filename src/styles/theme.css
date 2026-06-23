@@ -38,12 +38,9 @@
   --palette-red-500: oklch(0.637 0.237 25.33);
 
   /* TYPEFACES */
-  --typeface-inter: 'Inter Variable', 'Inter', sans-serif;
-  --typeface-outfit: 'Outfit Variable', sans-serif;
-  --typeface-azeret: 'Azeret Mono Variable', monospace;
-  --typeface-system: system-ui, -apple-system, sans-serif;
-  --typeface-emoji:
-    'Twemoji Country Flags', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --typeface-dm-serif-display: 'DM Serif Display', Georgia, serif;
+  --typeface-geist: 'Geist', system-ui, -apple-system, sans-serif;
+  --typeface-geist-mono: 'Geist Mono', monospace;
 
   /* ========================================================= */
   /* 2. THEMES (The Contextual Switchboard)                    */
@@ -117,9 +114,9 @@
   /* --------------------------------------------------------- */
 
   /* --- TYPOGRAPHY FAMILIES --- */
-  --font-body: var(--typeface-inter), var(--typeface-system), var(--typeface-emoji);
-  --font-heading: var(--typeface-outfit), var(--typeface-system), var(--typeface-emoji);
-  --font-mono: var(--typeface-azeret), var(--typeface-emoji);
+  --font-heading: var(--typeface-dm-serif-display);
+  --font-body: var(--typeface-geist);
+  --font-mono: var(--typeface-geist-mono);
 
   /* --- FONT WEIGHTS --- */
   --weight-light: 300; /* Large aesthetic display text or subtle metadata (Use with caution for accessibility) */
