@@ -102,8 +102,7 @@ html,
 /* SECTION BLOCK */
 .home_page-section {
   position: relative;
-  padding-block: fluid(var(--space-10), var(--space-16));
-  padding-inline: fluid(var(--space-5), var(--space-12));
+  padding: fluid(var(--space-5), var(--space-12));
 }
 
 .home_page-section:not(:last-child) {
@@ -193,16 +192,11 @@ html,
 
 /* PRINCIPLES SECTION */
 .home_page-principle {
-  padding-block: var(--space-3);
-}
-
-.home_page-principle:not(:last-child) {
-  border-bottom: var(--c-hairline) solid var(--border-base);
+  padding-block: var(--space-2);
 }
 
 .home_page-principle_index {
   flex-shrink: 0;
-  width: 1.75rem;
   color: var(--ink-faint);
   font-family: var(--font-mono);
   font-size: var(--text-sm);
@@ -407,11 +401,7 @@ html,
 
 /* CONTACT SECTION */
 .home_page-contact_row {
-  padding-block: var(--space-4);
-}
-
-.home_page-contact_row:not(:last-child) {
-  border-bottom: var(--c-hairline) solid var(--border-base);
+  padding-block: var(--space-2);
 }
 
 .home_page-contact_label {
