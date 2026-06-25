@@ -8,8 +8,6 @@
   );
 
   --c-hairline: 1px;
-  --c-graph: color-mix(in srgb, var(--border-base), transparent 35%); /* faint graph-paper line, derived from token */
-  --c-graph-cell: 2.5rem;
   --c-bio-rail: 5.5rem;
   --c-page-padding: fluid(var(--space-4), var(--space-8));
   --c-section-border: var(--c-hairline) solid var(--border-base);
@@ -142,6 +140,8 @@ html,
   font-family: var(--font-mono);
   font-size: var(--text-sm);
   font-weight: var(--weight-regular);
+  width: 2.25rem;
+  text-align: center;
 }
 
 .home_page-section_meta {
@@ -155,12 +155,6 @@ html,
 /* HERO SECTION */
 .home_page-section[data-region='hero'] {
   padding-block: fluid(var(--space-16), var(--space-24));
-  background-color: var(--bg-page);
-  background-image:
-    linear-gradient(to right, var(--c-graph) var(--c-hairline), transparent var(--c-hairline)),
-    linear-gradient(to bottom, var(--c-graph) var(--c-hairline), transparent var(--c-hairline));
-  background-size: var(--c-graph-cell) var(--c-graph-cell);
-  background-position: calc(var(--c-hairline) * -1);
 }
 
 .home_page-hero_tag {
