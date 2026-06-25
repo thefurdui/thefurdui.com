@@ -244,28 +244,13 @@ html,
   letter-spacing: 0.05em;
 }
 
-.work_card-status {
+.work_card-tag {
   color: var(--ink-muted);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   white-space: nowrap;
-}
-
-.work_card-status[data-variant='live'] {
-  color: var(--intent-success-strong);
-}
-
-.work_card-status[data-variant='live']::before {
-  content: '';
-  display: inline-block;
-  width: 0.4375rem;
-  height: 0.4375rem;
-  margin-right: var(--space-2);
-  background: var(--intent-success-base);
-  border-radius: var(--radius-full);
-  vertical-align: middle;
 }
 
 .work_card-title {
