@@ -213,7 +213,6 @@ html,
   border-top: var(--c-hairline) solid var(--border-base);
   border-left: var(--c-hairline) solid var(--border-base);
   border-radius: 0;
-  transition: background var(--duration-fast) var(--ease-standard);
 }
 
 .work_card:nth-child(3n) {
@@ -224,10 +223,13 @@ html,
   border-bottom: var(--c-hairline) solid var(--border-base);
 }
 
-.work_card:hover {
-  background: var(--bg-surface-hover);
-  outline: var(--c-hairline) solid var(--border-focus);
-  outline-offset: calc(-1 * var(--c-hairline));
+.work_card:hover:before {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  inset: calc(-1 * var(--c-hairline));
+  border: var(--c-hairline) solid var(--border-focus);
+  z-index: var(--z-pinned);
 }
 
 .work_card:has(.work_card-link:focus-visible) {
@@ -240,7 +242,6 @@ html,
   font-family: var(--font-mono);
   font-size: var(--text-sm);
   letter-spacing: 0.05em;
-  transition: color var(--duration-fast) var(--ease-standard);
 }
 
 .work_card-status {
@@ -305,9 +306,7 @@ html,
   flex-shrink: 0;
   color: var(--ink-faint);
   font-size: var(--text-sm);
-  transition:
-    color var(--duration-fast) var(--ease-standard),
-    transform var(--duration-fast) var(--ease-standard);
+  transition: transform var(--duration-fast) var(--ease-enter);
 }
 
 .work_card:hover .work_card-index {
@@ -315,7 +314,7 @@ html,
 }
 
 .work_card:hover .work_card-arrow {
-  color: var(--brand-primary);
+  color: var(--action-primary);
   transform: translate(0.125rem, -0.125rem);
 }
 
@@ -434,7 +433,7 @@ html,
 }
 
 .home_page-contact_value:hover {
-  color: var(--brand-primary);
+  color: var(--action-primary);
 }
 
 /* INLINE LINKS - anchors inside unclassed prose text (register + timeline) */
@@ -448,7 +447,7 @@ html,
 
 .home_page-principle_text a:hover,
 .home_page-bio_desc a:hover {
-  color: var(--brand-primary);
+  color: var(--action-primary);
 }
 
 /* FOCUS - visible keyboard rings */
