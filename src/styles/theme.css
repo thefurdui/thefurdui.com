@@ -230,12 +230,15 @@
   --blur-heavy: 16px;
   /* OS-level isolation. Maximum depth of field for massive background graphics. */
   --blur-dense: 24px;
+}
 
-  /* --------------------------------------------------------- */
-  /* 3B. DYNAMIC SEMANTICS (Theme-Dependent)                   */
-  /* Pointers that route to the active theme switchboard.      */
-  /* Default: Light Theme.                                     */
-  /* --------------------------------------------------------- */
+/* --------------------------------------------------------- */
+/* 3B. DYNAMIC SEMANTICS (Theme-Dependent)                   */
+/* Pointers that route to the active theme switchboard.      */
+/* Default: Light Theme.                                     */
+/* --------------------------------------------------------- */
+[data-theme='light'],
+[data-theme='dark'] [data-theme='inverse'] {
   --bg-page: var(--theme-light-bg-page);
   --bg-surface: var(--theme-light-bg-surface);
   --bg-surface-hover: var(--theme-light-bg-surface-hover);
@@ -264,45 +267,8 @@
   --mix-contrast: var(--theme-light-mix-contrast);
 }
 
-/* ========================================================= */
-/* GLOBAL DARK OVERRIDE                                      */
-/* ========================================================= */
-[data-theme='dark'] {
-  color-scheme: dark;
-
-  --bg-page: var(--theme-dark-bg-page);
-  --bg-surface: var(--theme-dark-bg-surface);
-  --bg-surface-hover: var(--theme-dark-bg-surface-hover);
-  --bg-overlay: var(--theme-dark-bg-overlay);
-
-  --ink-main: var(--theme-dark-ink-main);
-  --ink-muted: var(--theme-dark-ink-muted);
-  --ink-faint: var(--theme-dark-ink-faint);
-  --ink-inverse: var(--theme-dark-ink-inverse);
-
-  --border-base: var(--theme-dark-border-base);
-
-  --action-neutral: var(--theme-dark-action-neutral);
-  --action-neutral-hover: var(--theme-dark-action-neutral-hover);
-  --action-contrast: var(--theme-dark-action-contrast);
-  --action-contrast-hover: var(--theme-dark-action-contrast-hover);
-
-  --shadow-close: var(--theme-dark-shadow-close);
-  --shadow-base: var(--theme-dark-shadow-base);
-  --shadow-far: var(--theme-dark-shadow-far);
-
-  --intent-success-subtle: var(--theme-dark-intent-success-subtle);
-  --intent-warning-subtle: var(--theme-dark-intent-warning-subtle);
-  --intent-critical-subtle: var(--theme-dark-intent-critical-subtle);
-
-  --mix-contrast: var(--theme-dark-mix-contrast);
-}
-
-/* ========================================================= */
-/* THE CONTEXTUAL INVERSE ENGINE                             */
-/* ========================================================= */
-
-/* If global is Light Mode (or unspecified), Inverse becomes Dark */
+/* Dark theme */
+[data-theme='dark'],
 :root:not([data-theme='dark']) [data-theme='inverse'],
 [data-theme='light'] [data-theme='inverse'] {
   color-scheme: dark;
@@ -333,38 +299,6 @@
   --intent-critical-subtle: var(--theme-dark-intent-critical-subtle);
 
   --mix-contrast: var(--theme-dark-mix-contrast);
-}
-
-/* If global is Dark Mode, Inverse becomes Light */
-[data-theme='dark'] [data-theme='inverse'] {
-  color-scheme: light;
-
-  --bg-page: var(--theme-light-bg-page);
-  --bg-surface: var(--theme-light-bg-surface);
-  --bg-surface-hover: var(--theme-light-bg-surface-hover);
-  --bg-overlay: var(--theme-light-bg-overlay);
-
-  --ink-main: var(--theme-light-ink-main);
-  --ink-muted: var(--theme-light-ink-muted);
-  --ink-faint: var(--theme-light-ink-faint);
-  --ink-inverse: var(--theme-light-ink-inverse);
-
-  --border-base: var(--theme-light-border-base);
-
-  --action-neutral: var(--theme-light-action-neutral);
-  --action-neutral-hover: var(--theme-light-action-neutral-hover);
-  --action-contrast: var(--theme-light-action-contrast);
-  --action-contrast-hover: var(--theme-light-action-contrast-hover);
-
-  --shadow-close: var(--theme-light-shadow-close);
-  --shadow-base: var(--theme-light-shadow-base);
-  --shadow-far: var(--theme-light-shadow-far);
-
-  --intent-success-subtle: var(--theme-light-intent-success-subtle);
-  --intent-warning-subtle: var(--theme-light-intent-warning-subtle);
-  --intent-critical-subtle: var(--theme-light-intent-critical-subtle);
-
-  --mix-contrast: var(--theme-light-mix-contrast);
 }
 
 /* ========================================================= */
