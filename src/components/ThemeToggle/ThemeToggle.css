@@ -13,7 +13,6 @@
 
 .theme_toggle:hover {
   color: var(--ink-main);
-  background-color: color-mix(var(--action-neutral), transparent 60%);
 }
 
 .theme_toggle:focus-visible {
