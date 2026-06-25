@@ -387,7 +387,6 @@ html,
 }
 
 .home_page-bio_desc {
-  color: var(--ink-muted);
   font-size: var(--text-base);
   line-height: var(--leading-base);
 }
