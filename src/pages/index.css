@@ -340,13 +340,13 @@ html,
 }
 
 .home_page-bio_entry:first-of-type::before {
-  top: 50%;
+  top: var(--space-8);
 }
 
 .home_page-bio_entry::after {
   content: '';
   position: absolute;
-  top: calc(var(--space-4) + 0.6em);
+  top: calc(var(--space-4) + 0.75em);
   left: calc(var(--c-bio-rail) + var(--c-hairline) / 2);
   width: 0.5rem;
   height: 0.5rem;
@@ -363,7 +363,7 @@ html,
 .home_page-bio_year {
   position: absolute;
   left: 0;
-  top: var(--space-4);
+  top: calc(var(--space-4) + 0.1em);
   width: calc(var(--c-bio-rail) - var(--space-4));
   color: var(--ink-muted);
   font-size: var(--text-sm);
@@ -399,9 +399,9 @@ html,
 
 .home_page-bio_caret {
   display: inline-block;
-  width: 0.5rem;
-  height: 1rem;
-  margin-left: var(--space-1);
+  width: 0.5625em;
+  height: 1.125em;
+  margin-left: 0.125ch;
   background: var(--brand-primary);
   vertical-align: text-bottom;
   animation: home_page_blink 1.1s steps(1) infinite;
