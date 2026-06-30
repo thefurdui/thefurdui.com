@@ -36,7 +36,7 @@ html,
 
   content: '';
   position: fixed;
-  left: calc(var(--c-frame-margin) - var(--js-scrollbar-width) / 2);
+  left: var(--c-rail-border-y-offset);
   top: calc(var(--c-page-padding) * -1);
   bottom: calc(var(--c-page-padding) * -1);
   border-left: var(--c-section-border);
@@ -44,7 +44,7 @@ html,
 
 .home_page-rails::after {
   left: unset;
-  right: calc(var(--c-frame-margin) + var(--js-scrollbar-width) / 2);
+  right: var(--c-rail-border-y-offset);
 }
 
 /* REGISTRATION MARK */

@@ -17,12 +17,6 @@
   margin: 0;
 }
 
-/* Allow percentage-based heights in the application */
-html,
-body {
-  height: 100%;
-}
-
 /* Accessible line-height and default app font */
 body {
   line-height: var(--leading-base);
@@ -59,7 +53,6 @@ h6 {
 }
 
 /* Create a root stacking context */
-#root,
-#__next {
+.root_layout {
   isolation: isolate;
 }
