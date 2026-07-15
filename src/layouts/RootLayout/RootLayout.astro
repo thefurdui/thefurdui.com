@@ -8,12 +8,18 @@ import '../../styles/fonts.css'
 import './RootLayout.css'
 
 interface Props {
-  title: string
+  title?: string
   description?: string
   image?: string
 }
 
-const { title, description, image = '/og-image.png' } = Astro.props
+const DEFAULT_TITLE = 'Andrei Furdui · Product Engineer'
+const DEFAULT_DESCRIPTION =
+  'I ship products fast. Ex-founder & former Volkswagen engineer. I build resilient, zero-bloat systems for startups.'
+const DEFAULT_IMAGE = '/og-image.png'
+
+const { title = DEFAULT_TITLE, description, image = DEFAULT_IMAGE } = Astro.props
+const socialDescription = description ?? DEFAULT_DESCRIPTION
 
 const canonicalURL = new URL(Astro.url.pathname, 'https://thefurdui.com')
 ---
@@ -52,13 +58,13 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://thefurdui.com')
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={socialDescription} />
     <meta property="og:image" content={new URL(image, canonicalURL)} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@thefurdui" />
     <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:description" content={socialDescription} />
     <meta name="twitter:image" content={new URL(image, canonicalURL)} />
 
     <title>{title}</title>
