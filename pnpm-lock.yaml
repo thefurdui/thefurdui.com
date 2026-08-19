@@ -12,6 +12,9 @@ importers:
         specifier: ^7.0.1
         version: 7.0.1(@astrojs/markdown-remark@7.2.0)(@emnapi/core@1.10.0)(@emnapi/runtime@1.11.1)(@types/node@26.1.1)(rollup@4.62.2)
     devDependencies:
+      '@beam-css/postcss-fluid':
+        specifier: ^1.0.0
+        version: 1.0.0(postcss@8.5.15)
       '@iconify/json':
         specifier: ^2.2.500
         version: 2.2.500
@@ -124,6 +127,12 @@ packages:
   '@babel/types@7.29.7':
     resolution: {integrity: sha512-4zBIxpPzowiZpusoFkyGVwakdRJUyuH5PxQ/PrqghfdFWWasvnCdPfQXHrenDai+gyLARulZjZowCOj6fjT4pA==}
     engines: {node: '>=6.9.0'}
+
+  '@beam-css/postcss-fluid@1.0.0':
+    resolution: {integrity: sha512-Ps5X560gqB6hNoQnYl1bn0fUfp1TnOvGVLL3jY4E/1BGI2TDu1+D24Ghb4jmBgEL77K5wY3HGrNVUPRDiJbHFg==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      postcss: ^8.4.0
 
   '@bruits/satteri-darwin-arm64@0.9.1':
     resolution: {integrity: sha512-NE4qC2sRd0+R+oPMsKcUikIvWTGpAV16fSXNBoMSW7nK7Pd9e/ZGB7M8knep83pFmGmOb/5NbGKiVIh3oLbljw==}
@@ -1968,6 +1977,10 @@ snapshots:
     dependencies:
       '@babel/helper-string-parser': 7.29.7
       '@babel/helper-validator-identifier': 7.29.7
+
+  '@beam-css/postcss-fluid@1.0.0(postcss@8.5.15)':
+    dependencies:
+      postcss: 8.5.15
 
   '@bruits/satteri-darwin-arm64@0.9.1':
     optional: true
