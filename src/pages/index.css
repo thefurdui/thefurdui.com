@@ -8,7 +8,7 @@
   );
 
   --c-hairline: 1px;
-  --c-bio-rail: 5.5rem;
+  --c-bio-rail: 3rem;
   --c-page-padding: fluid(var(--space-4), var(--space-8));
   --c-section-border: var(--c-hairline) solid var(--border-base);
 
@@ -292,11 +292,9 @@ html,
 /* BIO SECTION */
 .home_page-bio_entry {
   display: flex;
-  justify-content: space-between;
-  gap: var(--space-2);
+  gap: var(--space-8);
   position: relative;
   padding-block: var(--space-4);
-  padding-left: calc(var(--c-bio-rail) + var(--space-5));
 }
 
 .home_page-bio_entry::before {
@@ -331,14 +329,12 @@ html,
 }
 
 .home_page-bio_year {
-  position: absolute;
-  left: 0;
-  top: calc(var(--space-4) + 0.1em);
-  width: calc(var(--c-bio-rail) - var(--space-4));
+  --c-bio-year-offset-y: 3px;
   color: var(--ink-muted);
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   text-align: right;
   font-variant-numeric: tabular-nums;
+  margin-top: var(--c-bio-year-offset-y);
 }
 
 .home_page-bio_age {
@@ -346,6 +342,7 @@ html,
   color: var(--ink-faint);
   font-size: var(--text-sm);
   white-space: nowrap;
+  margin-left: auto;
 }
 
 .home_page-bio_age::before {
@@ -449,13 +446,10 @@ html,
   }
 }
 
-@media (max-width: 40rem) {
-  .home_page {
-    --c-bio-rail: 4.5rem;
-  }
-
+@media (min-width: 40rem) {
   .home_page-bio_year {
-    font-size: var(--text-xs);
+    --c-bio-year-offset-y: 1px;
+    font-size: var(--text-sm);
   }
 }
 
