@@ -153,7 +153,7 @@ html,
 }
 
 /* HERO SECTION */
-.home_page-section[data-region='hero'] {
+.home_page-section[data-section='hero'] {
   padding-block: fluid(var(--space-16), var(--space-24));
 }
 
@@ -446,7 +446,7 @@ html,
 
 /* RESPONSIVENESS */
 @media (max-width: 48rem) {
-  .home_page-section[data-region='work'] .l_grid {
+  .home_page-section[data-section='work'] .l_grid {
     grid-template-columns: 1fr;
   }
 
