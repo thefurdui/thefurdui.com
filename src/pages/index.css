@@ -122,26 +122,12 @@ html,
   bottom: calc(var(--c-hairline) * -1);
 }
 
-.home_page-section_head {
-  padding-bottom: var(--space-4);
-  border-bottom: var(--c-hairline) solid var(--border-base);
-}
-
 .home_page-section_title {
   color: var(--ink-main);
   font-family: var(--font-heading);
   font-size: fluid(var(--text-xl), var(--text-2xl));
   line-height: var(--leading-tight);
   letter-spacing: 0.03em;
-}
-
-.home_page-section_index {
-  color: var(--ink-faint);
-  font-family: var(--font-mono);
-  font-size: var(--text-sm);
-  font-weight: var(--weight-regular);
-  width: 2.25rem;
-  text-align: center;
 }
 
 .home_page-section_meta {
