@@ -189,7 +189,16 @@ html,
 }
 
 /* SELECTED WORK SECTION */
+.home_page-work_list {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
 .work_card {
+  /* Small-canvas chrome: a stacked strip. Larger canvases reassign these. */
+  --c-edge-right: var(--c-hairline) solid var(--border-base);
+  --c-edge-bottom: 0;
+
   position: relative;
   display: flex;
   flex-direction: column;
@@ -197,16 +206,14 @@ html,
   padding: var(--space-5);
   background: var(--bg-surface);
   border-top: var(--c-hairline) solid var(--border-base);
+  border-right: var(--c-edge-right);
+  border-bottom: var(--c-edge-bottom);
   border-left: var(--c-hairline) solid var(--border-base);
   border-radius: 0;
 }
 
-.work_card:nth-child(3n) {
-  border-right: var(--c-hairline) solid var(--border-base);
-}
-
-.work_card:nth-last-child(-n + 3) {
-  border-bottom: var(--c-hairline) solid var(--border-base);
+.work_card:last-child {
+  --c-edge-bottom: var(--c-hairline) solid var(--border-base);
 }
 
 .work_card:hover:before {
@@ -427,29 +434,30 @@ html,
   border-radius: var(--radius-sm);
 }
 
-/* RESPONSIVENESS */
-@media (max-width: 48rem) {
-  .home_page-section[data-section='work'] .l_grid {
-    grid-template-columns: 1fr;
-  }
-
-  .work_card {
-    border-right: var(--c-hairline) solid var(--border-base);
-  }
-
-  .work_card:nth-last-child(-n + 3) {
-    border-bottom: 0;
-  }
-
-  .work_card:last-child {
-    border-bottom: var(--c-hairline) solid var(--border-base);
-  }
-}
-
+/* RESPONSIVENESS — unqueried rules are the small canvas; queries only add. */
 @media (min-width: 40rem) {
   .home_page-bio_year {
     --c-bio-year-offset-y: 1px;
     font-size: var(--text-sm);
+  }
+}
+
+@media (min-width: 48rem) {
+  .home_page-work_list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .work_card {
+    --c-edge-right: 0;
+    --c-edge-bottom: 0;
+  }
+
+  .work_card:nth-child(3n) {
+    --c-edge-right: var(--c-hairline) solid var(--border-base);
+  }
+
+  .work_card:nth-last-child(-n + 3) {
+    --c-edge-bottom: var(--c-hairline) solid var(--border-base);
   }
 }
 
