@@ -4,9 +4,15 @@ import './ThemeToggle.css'
 
 import lightModeIcon from '~icons/material-symbols/wb-sunny-outline?raw'
 import darkModeIcon from '~icons/material-symbols/dark-mode-outline?raw'
+
+interface Props {
+  label?: string
+}
+
+const { label = 'Toggle theme' } = Astro.props
 ---
 
-<button id="theme-toggle" class="theme_toggle u_reset_button u_pressable" type="button" aria-label="Toggle theme">
+<button id="theme-toggle" class="theme_toggle u_reset_button u_pressable" type="button" aria-label={label}>
   <span class="theme_toggle-icon" data-theme-icon="light">
     <Icon content={lightModeIcon} width="20" height="20" aria-hidden="true" />
   </span>

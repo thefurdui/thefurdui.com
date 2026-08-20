@@ -151,6 +151,31 @@ html,
   letter-spacing: 0.12em;
 }
 
+.home_page-locale_link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.25rem;
+  padding-inline: var(--space-2);
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.home_page-locale_link:hover {
+  color: var(--ink-main);
+}
+
+.home_page-locale_link:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
 .home_page-hero_tag[data-variant='muted'] {
   color: var(--ink-faint);
 }

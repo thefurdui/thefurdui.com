@@ -11,6 +11,7 @@ interface Props {
   title?: string
   description?: string
   image?: string
+  lang?: string
 }
 
 const DEFAULT_TITLE = 'Andrei Furdui · Product Engineer'
@@ -18,13 +19,14 @@ const DEFAULT_DESCRIPTION =
   'I ship products fast. Ex-founder & former Volkswagen engineer. I build resilient, zero-bloat systems for startups.'
 const DEFAULT_IMAGE = '/og-image.png'
 
-const { title = DEFAULT_TITLE, description, image = DEFAULT_IMAGE } = Astro.props
+const { lang = 'en', title = DEFAULT_TITLE, description, image = DEFAULT_IMAGE } = Astro.props
 const socialDescription = description ?? DEFAULT_DESCRIPTION
+const ogLocale = lang === 'ru' ? 'ru_RU' : 'en_US'
 
 const canonicalURL = new URL(Astro.url.pathname, 'https://thefurdui.com')
 ---
 
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
@@ -50,11 +52,32 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://thefurdui.com')
       type="font/woff2"
       crossorigin="anonymous"
     />
+    {
+      lang === 'ru' && (
+        <>
+          <link
+            rel="preload"
+            href="/fonts/geist-cyrillic-400-normal.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/fonts/geist-mono-cyrillic-400-normal.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin="anonymous"
+          />
+        </>
+      )
+    }
     <meta name="generator" content={Astro.generator} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {description && <meta name="description" content={description} />}
     <link rel="canonical" href={canonicalURL} />
 
+    <meta property="og:locale" content={ogLocale} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />

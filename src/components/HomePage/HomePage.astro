@@ -1,6 +1,14 @@
 ---
 import ThemeToggle from '../ThemeToggle/ThemeToggle.astro'
+import type { HomeCopy, Locale } from '../../copy/home'
 import './HomePage.css'
+
+interface Props {
+  locale: Locale
+  copy: HomeCopy
+}
+
+const { locale, copy: t } = Astro.props
 ---
 
 <div class="home_page">
@@ -10,13 +18,24 @@ import './HomePage.css'
       <div class="home_page-registration_mark_anchor" aria-hidden="true"></div>
       <div class="l_stack" data-gap="8">
         <div class="l_cluster" data-justify="between" data-gap="4" data-align="center">
-          <span class="home_page-hero_tag">Product Engineer</span>
-          <ThemeToggle />
+          <span class="home_page-hero_tag">{t.hero.tag}</span>
+          {
+            locale === 'ru' ? (
+              <div class="l_cluster" data-gap="1" data-align="center" data-nowrap>
+                <a class="home_page-locale_link" href="/" hreflang="en" lang="en">
+                  EN
+                </a>
+                <ThemeToggle label={t.ui.themeToggle} />
+              </div>
+            ) : (
+              <ThemeToggle label={t.ui.themeToggle} />
+            )
+          }
         </div>
 
         <div class="l_stack" data-gap="5">
-          <h1 class="home_page-title">Andrei Furdui</h1>
-          <p class="home_page-hero_lead">I ship products fast.</p>
+          <h1 class="home_page-title">{t.hero.name}</h1>
+          <p class="home_page-hero_lead">{t.hero.lead}</p>
         </div>
       </div>
     </section>
@@ -27,41 +46,23 @@ import './HomePage.css'
       <div class="l_stack" data-gap="6">
         <header class="home_page-section_head">
           <div class="l_cluster" data-justify="between" data-gap="4" data-align="end">
-            <h2 class="home_page-section_title">Core Beliefs</h2>
+            <h2 class="home_page-section_title">{t.beliefs.title}</h2>
           </div>
         </header>
 
         <ul class="home_page-principle_list u_reset_list">
-          <li class="home_page-principle">
-            <div class="l_cluster" data-gap="4" data-align="center" data-nowrap>
-              <span class="home_page-principle_index" data-nosnippet>01</span>
-              <p class="home_page-principle_text">Less is more.</p>
-            </div>
-          </li>
-          <li class="home_page-principle">
-            <div class="l_cluster" data-gap="4" data-align="center" data-nowrap>
-              <span class="home_page-principle_index" data-nosnippet>02</span>
-              <p class="home_page-principle_text">Consistency beats intensity.</p>
-            </div>
-          </li>
-          <li class="home_page-principle">
-            <div class="l_cluster" data-gap="4" data-align="center" data-nowrap>
-              <span class="home_page-principle_index" data-nosnippet>03</span>
-              <p class="home_page-principle_text">Perfectionism kills startups.</p>
-            </div>
-          </li>
-          <li class="home_page-principle">
-            <div class="l_cluster" data-gap="4" data-align="center" data-nowrap>
-              <span class="home_page-principle_index" data-nosnippet>04</span>
-              <p class="home_page-principle_text">Code is a liability. Keep it minimal.</p>
-            </div>
-          </li>
-          <li class="home_page-principle">
-            <div class="l_cluster" data-gap="4" data-align="center" data-nowrap>
-              <span class="home_page-principle_index" data-nosnippet>05</span>
-              <p class="home_page-principle_text">Tech debt is leverage if the interest doesn't compound.</p>
-            </div>
-          </li>
+          {
+            t.beliefs.items.map((item) => (
+              <li class="home_page-principle">
+                <div class="l_cluster" data-gap="4" data-align="center" data-nowrap>
+                  <span class="home_page-principle_index" data-nosnippet>
+                    {item.index}
+                  </span>
+                  <p class="home_page-principle_text">{item.text}</p>
+                </div>
+              </li>
+            ))
+          }
         </ul>
       </div>
     </section>
@@ -72,129 +73,42 @@ import './HomePage.css'
       <div class="l_stack" data-gap="6">
         <header class="home_page-section_head">
           <div class="l_cluster" data-justify="between" data-gap="4" data-align="end">
-            <h2 class="home_page-section_title">Selected Work</h2>
+            <h2 class="home_page-section_title">{t.work.title}</h2>
           </div>
         </header>
 
         <div class="home_page-work_list">
-          <article class="work_card">
-            <div class="l_cluster" data-justify="between" data-gap="2" data-align="start">
-              <span class="work_card-index" data-nosnippet>01</span>
-              <span class="work_card-tag" data-nosnippet>SaaS</span>
-            </div>
-            <div class="l_stack" data-gap="2">
-              <h3 class="work_card-title">
-                <a class="work_card-link" target="_blank" href="https://lode.my">Lode Ecosystem</a>
-              </h3>
-              <p class="work_card-desc">
-                A suite of apps for meticulous self-quantification. You are what you measure.
-              </p>
-            </div>
-            <div class="l_spacer"></div>
-            <div class="l_cluster" data-justify="between" data-gap="2">
-              <span class="work_card-host u_truncate" data-nosnippet>lode.my</span>
-              <span class="work_card-arrow" aria-hidden="true" data-nosnippet>↗</span>
-            </div>
-          </article>
-
-          <article class="work_card">
-            <div class="l_cluster" data-justify="between" data-gap="2" data-align="start">
-              <span class="work_card-index" data-nosnippet>02</span>
-              <span class="work_card-tag" data-nosnippet>AR · Web3</span>
-            </div>
-            <div class="l_stack" data-gap="2">
-              <h3 class="work_card-title">
-                <a class="work_card-link" target="_blank" href="https://arcoin.net">ARCOIN</a>
-              </h3>
-              <p class="work_card-desc">A geolocation-based AR metaverse. Peak scale: 120k MAU.</p>
-            </div>
-            <div class="l_spacer"></div>
-            <div class="l_cluster" data-justify="between" data-gap="2">
-              <span class="work_card-host u_truncate" data-nosnippet>arcoin.net</span>
-              <span class="work_card-arrow" aria-hidden="true" data-nosnippet>↗</span>
-            </div>
-          </article>
-
-          <article class="work_card">
-            <div class="l_cluster" data-justify="between" data-gap="2" data-align="start">
-              <span class="work_card-index" data-nosnippet>03</span>
-              <span class="work_card-tag" data-nosnippet>OSS</span>
-            </div>
-            <div class="l_stack" data-gap="2">
-              <h3 class="work_card-title">
-                <a class="work_card-link" target="_blank" href="https://beamcss.org">BEAM CSS</a>
-              </h3>
-              <p class="work_card-desc">
-                A strict, semantic, browser-native CSS architecture. The antidote to Atomic CSS and CSS-in-JS.
-              </p>
-            </div>
-            <div class="l_spacer"></div>
-            <div class="l_cluster" data-justify="between" data-gap="2">
-              <span class="work_card-host u_truncate" data-nosnippet>beamcss.org</span>
-              <span class="work_card-arrow" aria-hidden="true" data-nosnippet>↗</span>
-            </div>
-          </article>
-
-          <article class="work_card">
-            <div class="l_cluster" data-justify="between" data-gap="2" data-align="start">
-              <span class="work_card-index" data-nosnippet>04</span>
-              <span class="work_card-tag" data-nosnippet>OSS · CLI</span>
-            </div>
-            <div class="l_stack" data-gap="2">
-              <h3 class="work_card-title">
-                <a class="work_card-link" target="_blank" href="https://github.com/thefurdui/hap">hap</a>
-              </h3>
-              <p class="work_card-desc">
-                A CLI tool to orchestrate parallel AI agents across different Git branches within the same repo.
-              </p>
-            </div>
-            <div class="l_spacer"></div>
-            <div class="l_cluster" data-justify="between" data-gap="2">
-              <span class="work_card-host u_truncate" data-nosnippet>github.com/thefurdui/hap</span>
-              <span class="work_card-arrow" aria-hidden="true" data-nosnippet>↗</span>
-            </div>
-          </article>
-
-          <article class="work_card">
-            <div class="l_cluster" data-justify="between" data-gap="2" data-align="start">
-              <span class="work_card-index" data-nosnippet>05</span>
-              <span class="work_card-tag" data-nosnippet>OSS · CLI</span>
-            </div>
-            <div class="l_stack" data-gap="2">
-              <h3 class="work_card-title">
-                <a class="work_card-link" target="_blank" href="https://github.com/thefurdui/wic">wic</a>
-              </h3>
-              <p class="work_card-desc">
-                A CLI tool to compile wide-gamut (Display P3) web assets natively via headless Chromium.
-              </p>
-            </div>
-            <div class="l_spacer"></div>
-            <div class="l_cluster" data-justify="between" data-gap="2">
-              <span class="work_card-host u_truncate" data-nosnippet>github.com/thefurdui/wic</span>
-              <span class="work_card-arrow" aria-hidden="true" data-nosnippet>↗</span>
-            </div>
-          </article>
-
-          <article class="work_card">
-            <div class="l_cluster" data-justify="between" data-gap="2" data-align="start">
-              <span class="work_card-index" data-nosnippet>06</span>
-              <span class="work_card-tag" data-nosnippet>Enterprise</span>
-            </div>
-            <div class="l_stack" data-gap="2">
-              <h3 class="work_card-title">
-                <a class="work_card-link" target="_blank" href="https://www.saboit.de/references/audi-dpa">Audi DPA</a>
-              </h3>
-              <p class="work_card-desc">
-                Enterprise IIoT infrastructure. An assembly line and resource planner built for Audi and Volkswagen
-                factories.
-              </p>
-            </div>
-            <div class="l_spacer"></div>
-            <div class="l_cluster" data-justify="between" data-gap="2">
-              <span class="work_card-host u_truncate" data-nosnippet>saboit.de</span>
-              <span class="work_card-arrow" aria-hidden="true" data-nosnippet>↗</span>
-            </div>
-          </article>
+          {
+            t.work.items.map((item) => (
+              <article class="work_card">
+                <div class="l_cluster" data-justify="between" data-gap="2" data-align="start">
+                  <span class="work_card-index" data-nosnippet>
+                    {item.index}
+                  </span>
+                  <span class="work_card-tag" data-nosnippet>
+                    {item.tag}
+                  </span>
+                </div>
+                <div class="l_stack" data-gap="2">
+                  <h3 class="work_card-title">
+                    <a class="work_card-link" target="_blank" href={item.href}>
+                      {item.title}
+                    </a>
+                  </h3>
+                  <p class="work_card-desc">{item.description}</p>
+                </div>
+                <div class="l_spacer"></div>
+                <div class="l_cluster" data-justify="between" data-gap="2">
+                  <span class="work_card-host u_truncate" data-nosnippet>
+                    {item.host}
+                  </span>
+                  <span class="work_card-arrow" aria-hidden="true" data-nosnippet>
+                    ↗
+                  </span>
+                </div>
+              </article>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -205,93 +119,45 @@ import './HomePage.css'
       <div class="l_stack" data-gap="6">
         <header class="home_page-section_head">
           <div class="l_cluster" data-justify="between" data-gap="4" data-align="end">
-            <h2 class="home_page-section_title">Bio</h2>
+            <h2 class="home_page-section_title">{t.bio.title}</h2>
           </div>
         </header>
 
         <ol class="home_page-bio_list u_reset_list">
-          <li class="home_page-bio_entry">
-            <span class="home_page-bio_year" data-nosnippet>2002</span>
-            <p class="home_page-bio_desc">
-              Born in Chișinău, Moldova <span data-nosnippet
-                ><a
-                  target="_blank"
-                  href="https://www.google.com/maps/place/Chi%C8%99in%C4%83u,+Moldova/@47.0131285,28.7739849,11.88z/data=!4m15!1m8!3m7!1s0x40c97c3628b769a1:0x258119acdf53accb!2sMoldova!3b1!8m2!3d47.411631!4d28.369885!16zL20vMDR3NHM!3m5!1s0x40c97c3628b769a1:0x37d1d6305749dd3c!8m2!3d47.0104529!4d28.8638102!16zL20vMGZuNzc?entry=ttu&g_ep=EgoyMDI2MDYwMy4xIKXMDSoASAFQAw%3D%3D"
-                  >[where?]</a
-                ></span
-              >.
-            </p>
-            <span class="home_page-bio_age" data-nosnippet>0yo</span>
-          </li>
-          <li class="home_page-bio_entry">
-            <span class="home_page-bio_year" data-nosnippet>2009</span>
-            <p class="home_page-bio_desc">Started tinkering with Linux and custom Android ROMs.</p>
-            <span class="home_page-bio_age" data-nosnippet>7yo</span>
-          </li>
-          <li class="home_page-bio_entry">
-            <span class="home_page-bio_year" data-nosnippet>2016</span>
-            <p class="home_page-bio_desc">Started coding in Python.</p>
-            <span class="home_page-bio_age" data-nosnippet>14yo</span>
-          </li>
-          <li class="home_page-bio_entry">
-            <span class="home_page-bio_year" data-nosnippet>2017</span>
-            <p class="home_page-bio_desc">Implemented extreme Qubes OS opsec setup for a privacy-focused client.</p>
-            <span class="home_page-bio_age" data-nosnippet>15yo</span>
-          </li>
-          <li class="home_page-bio_entry">
-            <span class="home_page-bio_year" data-nosnippet>2018</span>
-            <p class="home_page-bio_desc">Built a Unity mobile game.</p>
-            <span class="home_page-bio_age" data-nosnippet>16yo</span>
-          </li>
-          <li class="home_page-bio_entry">
-            <span class="home_page-bio_year" data-nosnippet>2019</span>
-            <p class="home_page-bio_desc">
-              Secured a 6-month frontend contract with a governmental hosting provider in Kazakhstan.
-            </p>
-            <span class="home_page-bio_age" data-nosnippet>17yo</span>
-          </li>
-          <li class="home_page-bio_entry">
-            <span class="home_page-bio_year" data-nosnippet>2020</span>
-            <p class="home_page-bio_desc">Moved to Prague the morning after I became a legal adult.</p>
-            <span class="home_page-bio_age" data-nosnippet>18yo</span>
-          </li>
-          <li class="home_page-bio_entry">
-            <span class="home_page-bio_year" data-nosnippet>2021</span>
-            <p class="home_page-bio_desc">
-              Developed Audi & Volkswagen assembly line planner apps + other enterprise IIoT systems.
-            </p>
-            <span class="home_page-bio_age" data-nosnippet>18-21yo</span>
-          </li>
-          <li class="home_page-bio_entry">
-            <span class="home_page-bio_year" data-nosnippet>2024</span>
-            <p class="home_page-bio_desc">
-              Founded an <a target="_blank" href="https://arcoin.net/">AR/Crypto startup</a>. Raised $100k. Led a team
-              of 6.
-            </p>
-            <span class="home_page-bio_age" data-nosnippet>21yo</span>
-          </li>
-          <li class="home_page-bio_entry">
-            <span class="home_page-bio_year" data-nosnippet>2025</span>
-            <p class="home_page-bio_desc">
-              Moved to Tashkent <span data-nosnippet
-                ><a
-                  target="_blank"
-                  href="https://www.google.com/maps/place/Tashkent,+Uzbekistan/@41.2827379,69.1145598,11z/data=!3m1!4b1!4m6!3m5!1s0x38ae8b0cc379e9c3:0xa5a9323b4aa5cb98!8m2!3d41.2982211!4d69.2385223!16zL20vMGZzbXk?entry=ttu&g_ep=EgoyMDI2MDYwMy4xIKXMDSoASAFQAw%3D%3D"
-                  >[where?]</a
-                ></span
-              > with my girlfriend. Closed the startup. Learned from pain.
-            </p>
-            <span class="home_page-bio_age" data-nosnippet>22yo</span>
-          </li>
-          <li class="home_page-bio_entry" data-active="true">
-            <span class="home_page-bio_year" data-nosnippet>2026</span>
-            <p class="home_page-bio_desc">
-              Started using Neovim, btw. Optimizing my feedback loops with <a target="_blank" href="https://lode.my"
-                >Lode</a
-              >.&thinsp;<span class="home_page-bio_caret" aria-hidden="true" data-nosnippet></span>
-            </p>
-            <span class="home_page-bio_age" data-nosnippet>23yo</span>
-          </li>
+          {
+            t.bio.entries.map((entry) => (
+              <li class="home_page-bio_entry" data-active={entry.active ? 'true' : undefined}>
+                <span class="home_page-bio_year" data-nosnippet>
+                  {entry.year}
+                </span>
+                <p class="home_page-bio_desc">
+                  {entry.parts.map((part) =>
+                    typeof part === 'string' ? (
+                      part
+                    ) : part.nosnippet ? (
+                      <span data-nosnippet>
+                        <a target="_blank" href={part.href}>
+                          {part.label}
+                        </a>
+                      </span>
+                    ) : (
+                      <a target="_blank" href={part.href}>
+                        {part.label}
+                      </a>
+                    ),
+                  )}
+                  {entry.active && (
+                    <>
+                      &thinsp;<span class="home_page-bio_caret" aria-hidden="true" data-nosnippet />
+                    </>
+                  )}
+                </p>
+                <span class="home_page-bio_age" data-nosnippet>
+                  {entry.age}
+                </span>
+              </li>
+            ))
+          }
         </ol>
       </div>
     </section>
@@ -302,39 +168,25 @@ import './HomePage.css'
       <div class="l_stack" data-gap="6">
         <header class="home_page-section_head">
           <div class="l_cluster" data-justify="between" data-gap="4" data-align="end">
-            <h2 class="home_page-section_title">Contact</h2>
+            <h2 class="home_page-section_title">{t.contact.title}</h2>
           </div>
         </header>
 
         <ul class="home_page-contact_list u_reset_list">
-          <li class="home_page-contact_row">
-            <div class="l_cluster" data-justify="between" data-gap="4">
-              <span class="home_page-contact_label" data-nosnippet>Email</span>
-              <a class="home_page-contact_value" href="mailto:andrei@thefurdui.com">andrei@thefurdui.com</a>
-            </div>
-          </li>
-          <li class="home_page-contact_row">
-            <div class="l_cluster" data-justify="between" data-gap="4">
-              <span class="home_page-contact_label" data-nosnippet>Calendar</span>
-              <a class="home_page-contact_value" target="_blank" href="https://cal.com/thefurdui/15min"
-                >cal.com/thefurdui/15min</a
-              >
-            </div>
-          </li>
-          <li class="home_page-contact_row">
-            <div class="l_cluster" data-justify="between" data-gap="4">
-              <span class="home_page-contact_label" data-nosnippet>GitHub</span>
-              <a class="home_page-contact_value" target="_blank" href="https://github.com/thefurdui"
-                >github.com/thefurdui</a
-              >
-            </div>
-          </li>
-          <li class="home_page-contact_row">
-            <div class="l_cluster" data-justify="between" data-gap="4">
-              <span class="home_page-contact_label" data-nosnippet>Twitter</span>
-              <a class="home_page-contact_value" target="_blank" href="https://x.com/thefurdui">x.com/thefurdui</a>
-            </div>
-          </li>
+          {
+            t.contact.items.map((item) => (
+              <li class="home_page-contact_row">
+                <div class="l_cluster" data-justify="between" data-gap="4">
+                  <span class="home_page-contact_label" data-nosnippet>
+                    {item.label}
+                  </span>
+                  <a class="home_page-contact_value" href={item.href} target={item.external ? '_blank' : undefined}>
+                    {item.value}
+                  </a>
+                </div>
+              </li>
+            ))
+          }
         </ul>
       </div>
       <div class="home_page-registration_mark_anchor" aria-hidden="true"></div>
