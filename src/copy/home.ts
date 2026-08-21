@@ -200,7 +200,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           age: '21yo',
           parts: [
             'Founded an ',
-            { href: 'https://arcoin.net/', label: 'AR/Crypto startup' },
+            { href: 'https://arcoin.net/', label: 'AR/Web3 startup' },
             '. Raised $100k. Led a team of 6.',
           ],
         },
@@ -326,7 +326,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           age: '21 год',
           parts: [
             'Основал ',
-            { href: 'https://arcoin.net/', label: 'AR/крипто-стартап' },
+            { href: 'https://arcoin.net/', label: 'AR/Веб3-стартап' },
             '. Привлёк $100,000. Руководил командой из 6 человек.',
           ],
         },
@@ -343,7 +343,11 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           year: '2026',
           age: '23 года',
           active: true,
-          parts: ['Перешёл на Neovim, btw. Оптимизирую свою жизнь с ', { href: 'https://lode.my', label: 'Lode' }, '.'],
+          parts: [
+            'Перешёл на Neovim, btw. Оптимизирую свои жизненные процессы с ',
+            { href: 'https://lode.my', label: 'Lode' },
+            '.',
+          ],
         },
       ],
     },
