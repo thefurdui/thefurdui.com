@@ -8,13 +8,14 @@ website: thefurdui.com
 email: andrei@thefurdui.com
 github: https://github.com/thefurdui
 linkedin: https://linkedin.com/in/thefurdui
-passport: EU citizen (Romanian)
+passport: EU citizen
 location: Tashkent, UZ
 timezone: UTC+5
+languages: EN/RU/RO/CS
 
 ## Profile
 
-Professional software experience since 2019 across enterprise systems, startups and independent products. Former founder.
+Former founder with professional software experience since 2019 across enterprise systems, startups and independent products.
 
 ## Experience
 

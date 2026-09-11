@@ -1,0 +1,194 @@
+---
+import RootLayout from '../layouts/RootLayout/RootLayout.astro'
+import Icon from '../components/Icon/Icon.astro'
+import ThemeToggle from '../components/ThemeToggle/ThemeToggle.astro'
+import { resume, emphasize } from '../copy/resume'
+import webIcon from '~icons/mdi/earth?raw'
+import emailIcon from '~icons/mdi/email?raw'
+import githubIcon from '~icons/mdi/github-box?raw'
+import linkedinIcon from '~icons/mdi/linkedin?raw'
+import passportIcon from '~icons/mdi/passport?raw'
+import locationIcon from '~icons/mdi/map-marker?raw'
+// import locationIcon from '~icons/material-symbols/location-on?raw'
+import timezoneIcon from '~icons/mdi/clock?raw'
+import languagesIcon from '~icons/simple-icons/immersivetranslate?raw'
+import downloadIcon from '~icons/mdi/download?raw'
+import backIcon from '~icons/mdi/arrow-left?raw'
+import './resume.css'
+
+const detailTypes: Record<string, { icon: string; href?: (value: string) => string; label: string; text?: string }> = {
+  website: { icon: webIcon, href: (value) => `https://${value}`, label: 'Website' },
+  email: { icon: emailIcon, href: (value) => `mailto:${value}`, label: 'Email' },
+  github: { icon: githubIcon, href: (value) => value, label: 'GitHub', text: 'github' },
+  linkedin: { icon: linkedinIcon, href: (value) => value, label: 'LinkedIn', text: 'linkedin' },
+  passport: { icon: passportIcon, label: 'Citizenship' },
+  location: { icon: locationIcon, label: 'Location' },
+  timezone: { icon: timezoneIcon, label: 'Time zone' },
+  languages: { icon: languagesIcon, label: 'Spoken languages' },
+}
+
+const skillLabels: Record<string, string> = {
+  Languages: 'languages',
+  Frontend: 'frontend',
+  'Backend & Data': 'backend / data',
+  'Infrastructure & Tools': 'infra / tools',
+}
+---
+
+<RootLayout title="Andrei Furdui · Resume" description={`${resume.role}. ${resume.profile}`}>
+  <div class="resume_page">
+    <nav class="resume_page-toolbar" aria-label="Resume actions">
+      <a class="resume_page-back" href="/">
+        <Icon content={backIcon} width="14" height="14" aria-hidden="true" />
+        thefurdui.com
+      </a>
+      <div class="l_cluster" data-gap="2">
+        <ThemeToggle />
+        <a class="resume_page-download" href="/andrei-furdui-resume.pdf" download="Andrei-Furdui-Resume.pdf">
+          <Icon content={downloadIcon} width="16" height="16" aria-hidden="true" />
+          download <span class="resume_page-file_type">.pdf</span>
+        </a>
+      </div>
+    </nav>
+
+    <div class="resume_page-preview" role="region" aria-label="US Letter resume preview" tabindex="0">
+      <article class="resume_page-sheet" data-theme="light" aria-labelledby="resume-name">
+        <header class="resume_page-header">
+          <h1 class="resume_page-name" id="resume-name">{resume.name}</h1>
+          <p class="resume_page-role">{resume.role}</p>
+          <ul class="resume_page-details u_reset_list">
+            {
+              resume.details.map(({ label, value }) => {
+                const detail = detailTypes[label]
+                const href = detail.href?.(value)
+                const display = detail.text ?? value.replace(/^https:\/\//, '')
+                const iconSize = label === 'languages' ? 11 : 12
+                return (
+                  <li class="resume_page-detail" data-detail={label}>
+                    <Icon
+                      content={detail.icon}
+                      class="resume_page-detail_icon"
+                      width={iconSize}
+                      height={iconSize}
+                      aria-hidden="true"
+                    />
+                    {href ? (
+                      <a
+                        class="resume_page-link"
+                        href={href}
+                        aria-label={`${detail.label}: ${value.replace(/^https:\/\//, '')}`}
+                      >
+                        {display}
+                      </a>
+                    ) : (
+                      <span>
+                        <span class="u_sr_only">{detail.label}: </span>
+                        {value}
+                      </span>
+                    )}
+                  </li>
+                )
+              })
+            }
+          </ul>
+          <p class="resume_page-profile">{resume.profile}</p>
+        </header>
+
+        <section class="resume_page-section" aria-labelledby="resume-experience">
+          <h2 class="resume_page-section_heading" id="resume-experience">
+            <span class="resume_page-section_label">experience</span>
+          </h2>
+          <div class="resume_page-entries">
+            {
+              resume.experience.map((entry) => (
+                <article class="resume_page-entry">
+                  <div class="resume_page-entry_heading">
+                    <h3 class="resume_page-entry_title">
+                      {entry.title}
+                      <span class="resume_page-metadata"> · {entry.metadata}</span>
+                    </h3>
+                    <span class="resume_page-date">{entry.date}</span>
+                  </div>
+                  <ul class="resume_page-description_list">
+                    {entry.bullets.map((bullet) => (
+                      <li class="resume_page-description_item">
+                        {emphasize(bullet).map((part) =>
+                          part.strong ? <strong class="resume_page-evidence">{part.text}</strong> : part.text,
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              ))
+            }
+          </div>
+        </section>
+
+        <section class="resume_page-section" aria-labelledby="resume-projects">
+          <h2 class="resume_page-section_heading" id="resume-projects">
+            <span class="resume_page-section_label">selected projects</span>
+          </h2>
+          <div class="resume_page-entries">
+            {
+              resume.projects.map((entry) => (
+                <article class="resume_page-entry">
+                  <div class="resume_page-entry_heading">
+                    <h3 class="resume_page-entry_title">
+                      {entry.title}
+                      <span class="resume_page-project_summary"> [{entry.metadata}]</span>
+                      <span class="resume_page-metadata">
+                        {' '}
+                        ·{' '}
+                        <a class="resume_page-project_link resume_page-link" href={`https://${entry.host}`}>
+                          {entry.host}
+                          <span aria-hidden="true"> ↗</span>
+                        </a>
+                      </span>
+                    </h3>
+                    <span class="resume_page-date">{entry.date}</span>
+                  </div>
+                  <ul class="resume_page-description_list">
+                    {entry.bullets.map((bullet) => (
+                      <li class="resume_page-description_item">{bullet}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))
+            }
+          </div>
+        </section>
+
+        <section class="resume_page-section" aria-labelledby="resume-skills">
+          <h2 class="resume_page-section_heading" id="resume-skills">
+            <span class="resume_page-section_label">technical skills</span>
+          </h2>
+          <dl class="resume_page-skills">
+            {
+              resume.skills.map(({ label, value }) => (
+                <div class="resume_page-skill_row">
+                  <dt class="resume_page-skill_label">{skillLabels[label] ?? label.toLowerCase()}</dt>
+                  <dd class="resume_page-skill_values">{value}</dd>
+                </div>
+              ))
+            }
+          </dl>
+        </section>
+      </article>
+    </div>
+  </div>
+</RootLayout>
+
+<script>
+  const preview = document.querySelector<HTMLElement>('.resume_page-preview')
+  if (preview) {
+    // Keep the document composition intact on phones. Native pinch zoom remains
+    // available; without JavaScript the document can still scroll horizontally.
+    const pageWidth = parseFloat(getComputedStyle(preview).getPropertyValue('--c-resume-page-width'))
+    const observer = new ResizeObserver(([entry]) => {
+      preview.style.setProperty('--c-resume-scale', String(Math.min(1, entry.contentRect.width / pageWidth)))
+    })
+    observer.observe(preview)
+    window.addEventListener('pagehide', () => observer.disconnect(), { once: true })
+    window.addEventListener('pageshow', () => observer.observe(preview))
+  }
+</script>

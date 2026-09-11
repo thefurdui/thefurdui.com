@@ -1,0 +1,340 @@
+.resume_page {
+  --c-resume-page-width: 816px;
+  --c-resume-page-height: 1056px;
+  min-height: 100dvh;
+  padding: var(--space-4);
+  color: var(--ink-main);
+  background: var(--bg-page);
+}
+
+.resume_page-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  max-width: var(--c-resume-page-width);
+  margin-inline: auto;
+  margin-bottom: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
+
+.resume_page-back,
+.resume_page-download {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 2.75rem;
+  color: var(--ink-main);
+  text-decoration: none;
+}
+
+.resume_page-back:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+.resume_page-download {
+  padding-inline: var(--space-3);
+  border: 1px solid var(--action-contrast);
+  background: var(--action-contrast);
+  color: var(--ink-inverse);
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+
+.resume_page-download:hover {
+  background: var(--action-contrast-hover);
+}
+
+.resume_page-file_type {
+  opacity: var(--opacity-muted);
+}
+
+.resume_page-preview {
+  max-width: var(--c-resume-page-width);
+  margin-inline: auto;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  outline: 1px solid var(--border-base);
+  box-shadow: var(--shadow-far);
+}
+
+/* A document is a fixed canvas, scaled to fit the screen with native pinch zoom.
+   Horizontal scrolling is the fallback when JavaScript is unavailable.
+   US Letter is 816 × 1056 at 96 CSS pixels per inch. The screen preview and
+   print share typography and margins; only the surrounding controls disappear. */
+.resume_page-sheet {
+  --c-resume-ink: color-mix(in srgb, var(--ink-main) 85%, var(--ink-muted));
+  --c-resume-muted: color-mix(in srgb, var(--ink-main) 35%, var(--ink-muted));
+  display: flex;
+  flex-direction: column;
+  width: var(--c-resume-page-width);
+  height: var(--c-resume-page-height);
+  zoom: var(--c-resume-scale, 1);
+  padding: var(--space-8) var(--space-10);
+  color: var(--c-resume-ink);
+  background: var(--bg-surface);
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  line-height: 1.38;
+  font-kerning: normal;
+  color-scheme: light;
+}
+
+.resume_page-name {
+  color: var(--ink-main);
+  font-family: var(--font-heading);
+  font-size: 40px;
+  font-weight: var(--weight-regular);
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+
+.resume_page-role {
+  margin-top: var(--space-1);
+  color: var(--ink-main);
+  font-size: 14px;
+  font-weight: var(--weight-semibold);
+}
+
+.resume_page-details {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+  color: var(--c-resume-muted);
+  font-family: var(--font-mono);
+  font-size: 9.25px;
+  line-height: 1.4;
+}
+
+.resume_page-detail {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  white-space: nowrap;
+}
+
+.resume_page-detail_icon {
+  flex-shrink: 0;
+  color: var(--c-resume-muted);
+}
+
+.resume_page-link {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-color: var(--c-resume-muted);
+  text-decoration-thickness: 0.5px;
+  text-underline-offset: 0.2em;
+}
+
+.resume_page-link:hover {
+  color: var(--ink-main);
+  text-decoration-color: currentColor;
+}
+
+.resume_page-link:focus-visible,
+.resume_page-back:focus-visible,
+.resume_page-download:focus-visible,
+.resume_page-preview:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 3px;
+}
+
+.resume_page-profile {
+  margin-top: var(--space-3);
+  max-width: 95ch;
+  text-wrap: pretty;
+}
+
+.resume_page-section {
+  margin-top: var(--space-3);
+}
+
+.resume_page-section_heading {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: var(--space-2);
+  color: var(--ink-main);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: var(--weight-regular);
+  line-height: 1.4;
+}
+
+.resume_page-section_heading::before,
+.resume_page-section_heading::after {
+  content: '';
+  border-top: 1px solid var(--brand-primary);
+}
+
+.resume_page-section_heading::before {
+  width: 12px;
+}
+
+.resume_page-section_heading::after {
+  flex: 1;
+}
+
+.resume_page-section_label {
+  padding-inline: var(--space-1);
+  border: 1px solid var(--brand-primary);
+  background: color-mix(in srgb, var(--brand-primary) 6%, var(--bg-surface));
+}
+
+.resume_page-entries {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--space-2) + var(--space-1) / 2);
+}
+
+.resume_page-entry {
+  break-inside: avoid;
+}
+
+.resume_page-entry_heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  align-items: baseline;
+  column-gap: var(--space-3);
+}
+
+.resume_page-entry_title {
+  color: var(--ink-main);
+  font-size: 12.25px;
+  font-weight: var(--weight-semibold);
+  line-height: 1.35;
+}
+
+.resume_page-date {
+  color: var(--c-resume-muted);
+  font-family: var(--font-mono);
+  font-size: 9.25px;
+  line-height: 1.35;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.resume_page-metadata,
+.resume_page-project_link {
+  color: var(--c-resume-muted);
+  font-family: var(--font-mono);
+  font-size: 9.25px;
+  font-weight: var(--weight-regular);
+  line-height: inherit;
+  white-space: nowrap;
+}
+
+.resume_page-project_summary {
+  color: var(--c-resume-muted);
+  font-size: 10px;
+  font-weight: var(--weight-regular);
+}
+
+.resume_page-description_list {
+  display: grid;
+  row-gap: calc(var(--space-1) / 4);
+  margin-top: calc(var(--space-1) * 0.75);
+  padding-inline-start: var(--space-3);
+  list-style-type: square;
+  list-style-position: outside;
+}
+
+.resume_page-description_item {
+  padding-inline-start: calc(var(--space-1) / 2);
+  text-wrap: pretty;
+}
+
+.resume_page-description_item::marker {
+  color: var(--c-resume-muted);
+  font-size: 0.75em;
+}
+
+.resume_page-evidence {
+  color: var(--ink-main);
+  font-weight: var(--weight-semibold);
+}
+
+.resume_page-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+}
+
+.resume_page-skill_row {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  white-space: nowrap;
+}
+
+.resume_page-skill_label {
+  color: var(--c-resume-muted);
+  font-family: var(--font-mono);
+  font-size: 9.25px;
+  letter-spacing: 0.015em;
+}
+
+.resume_page-skill_label::after {
+  content: ':';
+}
+
+.resume_page-skill_values {
+  color: var(--c-resume-ink);
+}
+
+@media (min-width: 48rem) {
+  .resume_page {
+    padding: var(--space-8);
+  }
+
+  .resume_page-toolbar {
+    margin-bottom: var(--space-6);
+  }
+}
+
+@page {
+  size: letter;
+  margin: 0;
+}
+
+@media print {
+  .resume_page {
+    width: 8.5in;
+    min-height: 0;
+    padding: 0;
+    background: transparent;
+  }
+
+  .resume_page-toolbar {
+    display: none;
+  }
+
+  .resume_page-preview {
+    max-width: none;
+    margin: 0;
+    overflow: visible;
+    border: 0;
+    outline: 0;
+    box-shadow: none;
+  }
+
+  .resume_page-sheet {
+    width: 8.5in;
+    height: 11in;
+    zoom: 1;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .resume_page-section_heading {
+    break-after: avoid;
+  }
+
+  .resume_page-description_item,
+  .resume_page-skill_row {
+    break-inside: avoid;
+  }
+}

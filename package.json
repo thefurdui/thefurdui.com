@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "resume:pdf": "astro build && node scripts/export-resume.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -18,6 +19,7 @@
     "@beam-css/postcss-fluid": "^1.0.0",
     "@iconify/json": "^2.2.500",
     "@types/node": "^26.1.1",
+    "playwright-core": "^1.63.0",
     "unplugin-icons": "^23.0.1"
   }
 }
