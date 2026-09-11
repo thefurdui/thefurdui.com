@@ -12,3 +12,7 @@ Export requires Google Chrome. Set `CHROME_PATH` to use another installed Chromi
 executable. The exporter waits for fonts, checks that content stays within the
 print margins, checks for failed resources, and always closes its browser and
 preview server.
+
+The PDF's `X-Robots-Tag: noindex, follow` response header is configured in
+`public/_headers`. Astro copies this file into `dist/` for Cloudflare Pages to
+apply after deployment; Astro's local preview server does not apply these rules.

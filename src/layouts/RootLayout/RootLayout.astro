@@ -12,6 +12,7 @@ interface Props {
   description?: string
   image?: string
   lang?: string
+  robots?: string
 }
 
 const DEFAULT_TITLE = 'Andrei Furdui · Product Engineer'
@@ -19,7 +20,7 @@ const DEFAULT_DESCRIPTION =
   'I ship products fast. Ex-founder & former Volkswagen engineer. I build resilient, zero-bloat systems for startups.'
 const DEFAULT_IMAGE = '/og-image.png'
 
-const { lang = 'en', title = DEFAULT_TITLE, description, image = DEFAULT_IMAGE } = Astro.props
+const { lang = 'en', title = DEFAULT_TITLE, description, image = DEFAULT_IMAGE, robots } = Astro.props
 const socialDescription = description ?? DEFAULT_DESCRIPTION
 const ogLocale = lang === 'ru' ? 'ru_RU' : 'en_US'
 
@@ -75,6 +76,7 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://thefurdui.com')
     <meta name="generator" content={Astro.generator} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {description && <meta name="description" content={description} />}
+    {robots && <meta name="robots" content={robots} />}
     <link rel="canonical" href={canonicalURL} />
 
     <meta property="og:locale" content={ogLocale} />
