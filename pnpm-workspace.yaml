@@ -3,3 +3,4 @@ allowBuilds:
   sharp: true
 minimumReleaseAgeExclude:
   - '@beam-css/postcss-fluid@1.0.0'
+  - '@sparticuz/chromium@153.0.0'

@@ -1,4 +1,5 @@
-import { copyFile, writeFile } from 'node:fs/promises'
+import { writeFile } from 'node:fs/promises'
+import { fileURLToPath } from 'node:url'
 import { preview } from 'astro'
 import { chromium } from 'playwright-core'
 
@@ -8,9 +9,23 @@ const server = await preview({ server: { host: '127.0.0.1', port: 0 } })
 let browser
 
 try {
-  browser = await chromium.launch(process.env.CHROME_PATH
-    ? { executablePath: process.env.CHROME_PATH }
-    : { channel: 'chrome' })
+  let launchOptions = { channel: 'chrome' }
+  if (process.env.CHROME_PATH) {
+    launchOptions = { executablePath: process.env.CHROME_PATH }
+  } else if (process.platform === 'linux' && process.arch === 'x64') {
+    // Pages builds run on Linux x64. This package supplies headless Chromium
+    // without requiring a system Chrome installation or root access.
+    const { default: headlessChromium, inflate, setupLambdaEnvironment } = await import('@sparticuz/chromium')
+    // Outside Lambda the package does not extract its shared libraries itself.
+    // Supply them here too, so the build does not need OS package installation.
+    const runtimePath = await inflate(fileURLToPath(new URL('../bin/al2023.tar.br', import.meta.resolve('@sparticuz/chromium'))))
+    setupLambdaEnvironment(`${runtimePath}/lib`)
+    launchOptions = {
+      args: headlessChromium.args,
+      executablePath: await headlessChromium.executablePath(),
+    }
+  }
+  browser = await chromium.launch(launchOptions)
   const page = await browser.newPage()
   const errors = []
   page.on('pageerror', (error) => errors.push(error.message))
@@ -50,10 +65,12 @@ try {
     outline: true,
   })
   const filename = 'andrei-furdui-resume.pdf'
-  await writeFile(new URL(`../public/${filename}`, import.meta.url), pdf)
-  await copyFile(new URL(`../public/${filename}`, import.meta.url), new URL(`../dist/${filename}`, import.meta.url))
+  await writeFile(new URL(`../dist/${filename}`, import.meta.url), pdf)
   console.log(`Exported ${filename} (${Math.round(pdf.length / 1024)} KB); all content fits US Letter.`)
 } finally {
-  await browser?.close()
-  await server.stop()
+  try {
+    await browser?.close()
+  } finally {
+    await server.stop()
+  }
 }
