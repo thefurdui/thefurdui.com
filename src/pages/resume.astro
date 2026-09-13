@@ -14,6 +14,7 @@ import timezoneIcon from '~icons/mdi/clock?raw'
 import languagesIcon from '~icons/simple-icons/immersivetranslate?raw'
 import downloadIcon from '~icons/mdi/download?raw'
 import backIcon from '~icons/mdi/arrow-left?raw'
+import arrowTopRightIcon from '~icons/mdi/arrow-top-right?raw'
 import './resume.css'
 
 const detailTypes: Record<string, { icon: string; href?: (value: string) => string; label: string; text?: string }> = {
@@ -141,7 +142,13 @@ const skillLabels: Record<string, string> = {
                         ·{' '}
                         <a class="resume_page-project_link resume_page-link" href={`https://${entry.host}`}>
                           {entry.host}
-                          <span aria-hidden="true"> ↗</span>
+                          <Icon
+                            content={arrowTopRightIcon}
+                            class="resume_page-project_icon"
+                            width="12"
+                            height="12"
+                            aria-hidden="true"
+                          />
                         </a>
                       </span>
                     </h3>

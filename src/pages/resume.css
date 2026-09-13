@@ -227,6 +227,12 @@
   white-space: nowrap;
 }
 
+.resume_page-project_icon {
+  display: inline-block;
+  margin-inline-start: calc(var(--space-1) / 2);
+  vertical-align: middle;
+}
+
 .resume_page-project_summary {
   color: var(--c-resume-muted);
   font-size: 10px;

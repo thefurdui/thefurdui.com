@@ -1,5 +1,7 @@
 ---
 import ThemeToggle from '../ThemeToggle/ThemeToggle.astro'
+import Icon from '../Icon/Icon.astro'
+import arrowTopRightIcon from '~icons/mdi/arrow-top-right?raw'
 import type { HomeCopy, Locale } from '../../copy/home'
 import './HomePage.css'
 
@@ -100,9 +102,14 @@ const { locale, copy: t } = Astro.props
                   <span class="work_card-host u_truncate" data-nosnippet>
                     {item.host}
                   </span>
-                  <span class="work_card-arrow" aria-hidden="true" data-nosnippet>
-                    ↗
-                  </span>
+                  <Icon
+                    content={arrowTopRightIcon}
+                    class="work_card-arrow"
+                    width="1em"
+                    height="1em"
+                    aria-hidden="true"
+                    data-nosnippet
+                  />
                 </div>
               </article>
             ))
