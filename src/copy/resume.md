@@ -20,8 +20,8 @@ Former founder with professional software experience since 2019 across enterpris
 ## Experience
 
 - Independent Product Engineer · Tashkent, UZ · Remote · Dec 2025 – Present
-  - Built an e-commerce platform and shared customer/purchase backend across three related luxury businesses.
-  - Built two websites for a contemporary theater on a shared PocketBase backend, with a custom admin panel and scoped content permissions.
+  - Built an e-commerce platform and shared customer/purchase backend across 3 related luxury businesses.
+  - Built 2 websites for a contemporary theater on a shared PocketBase backend, with a custom admin panel and scoped content permissions.
   - Took over a legacy Node.js/MongoDB job-search platform from an external team, stabilized the codebase and brought it to release.
 
 - ARCOIN · Founder & CEO · Prague, CZ / Tashkent, UZ · Remote · Apr 2024 – Nov 2025
