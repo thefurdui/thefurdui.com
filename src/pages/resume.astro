@@ -2,7 +2,7 @@
 import RootLayout from '../layouts/RootLayout/RootLayout.astro'
 import Icon from '../components/Icon/Icon.astro'
 import ThemeToggle from '../components/ThemeToggle/ThemeToggle.astro'
-import { resume, emphasize } from '../copy/resume'
+import { resume, formatBullet } from '../copy/resume'
 import webIcon from '~icons/mdi/earth?raw'
 import emailIcon from '~icons/mdi/email?raw'
 import githubIcon from '~icons/mdi/github-box?raw'
@@ -113,9 +113,21 @@ const skillLabels: Record<string, string> = {
                   <ul class="resume_page-description_list">
                     {entry.bullets.map((bullet) => (
                       <li class="resume_page-description_item">
-                        {emphasize(bullet).map((part) =>
-                          part.strong ? <strong class="resume_page-evidence">{part.text}</strong> : part.text,
-                        )}
+                        {formatBullet(bullet).map((part) => {
+                          const content = part.href ? (
+                            <a class="resume_page-link" data-variant="inline" href={part.href}>
+                              {part.text}
+                              <Icon
+                                content={arrowTopRightIcon}
+                                class="resume_page-link_icon"
+                                width="12"
+                                height="12"
+                                aria-hidden="true"
+                              />
+                            </a>
+                          ) : part.text
+                          return part.strong ? <strong class="resume_page-evidence">{content}</strong> : content
+                        })}
                       </li>
                     ))}
                   </ul>
@@ -144,7 +156,7 @@ const skillLabels: Record<string, string> = {
                           {entry.host}
                           <Icon
                             content={arrowTopRightIcon}
-                            class="resume_page-project_icon"
+                            class="resume_page-link_icon"
                             width="12"
                             height="12"
                             aria-hidden="true"

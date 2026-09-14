@@ -135,6 +135,10 @@
   text-decoration-color: currentColor;
 }
 
+.resume_page-link[data-variant='inline'] {
+  white-space: nowrap;
+}
+
 .resume_page-link:focus-visible,
 .resume_page-back:focus-visible,
 .resume_page-download:focus-visible {
@@ -228,7 +232,7 @@
   white-space: nowrap;
 }
 
-.resume_page-project_icon {
+.resume_page-link_icon {
   display: inline-block;
   margin-inline-start: calc(var(--space-1) / 2);
   vertical-align: middle;

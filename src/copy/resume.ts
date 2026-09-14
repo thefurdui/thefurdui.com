@@ -56,8 +56,16 @@ export const resume = {
   skills: fields('Technical Skills'),
 }
 
-export function emphasize(text: string) {
+export function formatBullet(text: string) {
   return text
-    .split(/(122k peak MAU|~\$100k in external funding|Audi and Volkswagen|Led a 6-person team)/g)
-    .map((text, index) => ({ text, strong: index % 2 === 1 }))
+    .split(/(122k peak MAU|~\$100k in external funding|(?:Audi|\[Audi\]\([^)]+\)) and Volkswagen|Led a 6-person team)/g)
+    .flatMap((text, index) =>
+      text
+        .split(/(\[[^\]]+\]\(https?:\/\/[^\s)]+\))/g)
+        .filter(Boolean)
+        .map((text) => {
+          const link = text.match(/^\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)$/)
+          return { text: link?.[1] ?? text, href: link?.[2], strong: index % 2 === 1 }
+        }),
+    )
 }

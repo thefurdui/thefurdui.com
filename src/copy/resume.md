@@ -30,7 +30,7 @@ Former founder with professional software experience since 2019 across enterpris
   - Secured partnerships and ~$100k in external funding. Led investor relations and accelerator participation.
 
 - SABO · Software Engineer · Prague, CZ · On-site · Nov 2021 – Feb 2024
-  - Built assembly-line planning interfaces and 2D/3D factory navigation for Audi and Volkswagen using React, Deck.gl and Three.js.
+  - Built assembly-line planning interfaces and 2D/3D factory navigation for [Audi](https://www.saboit.de/references/audi-dpa) and Volkswagen using React, Deck.gl and Three.js.
   - Built an Audi 3D production timeline prototype to scrub through assembly stages and inspect vehicle position over time.
   - Built a coverage pipeline merging Jest and Cypress reports across separate repositories using Git submodules and shell scripting.
   - Built conditional multi-step firmware-update workflows for an IIoT product. Later took sole frontend ownership.
