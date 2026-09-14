@@ -50,11 +50,11 @@ Former founder with professional software experience since 2019 across enterpris
   - Built multi-currency shared ledgers, historical FX, transfers and P&L in Gain; timelines, projects/activities and versioned long-range roadmaps in Beat.
   - Built the apps with SolidJS and Go, plus a shared SSO service using Ed25519 JWTs, JWKS and Redis-backed refresh-token rotation.
 
-- BEAM CSS · Deterministic browser-native CSS architecture · beamcss.org · 2026 – Present
+- BEAM CSS · Deterministic browser-native CSS architecture · beamcss.org · Jul 2023 – Present
   - Designed a strict CSS architecture for predictable theming, refactoring and cross-component consistency, using component namespaces, data-\* state, co-located styles and semantic tokens.
   - Built the reference implementation, starter kit and agent skill, plus a tested PostCSS plugin that compiles token-aware fluid() values to zero-runtime clamp() CSS.
 
-- hap · CLI orchestrator for parallel AI coding agents · github.com/thefurdui/hap · 2026 – Present
+- hap · CLI orchestrator for parallel AI coding agents · github.com/thefurdui/hap · Jan 2026 – Present
   - Built a Bash CLI for running multiple coding agents in parallel, giving each task an isolated Git worktree and development environment.
   - Implemented multi-repo workspace orchestration, shared configuration, dependency setup, Zellij sessions and server processes, with safe workspace and branch cleanup.
 
