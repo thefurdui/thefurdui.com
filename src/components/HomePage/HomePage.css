@@ -260,22 +260,6 @@
   margin-top: var(--c-bio-year-offset-y);
 }
 
-.home_page-bio_age {
-  font-family: var(--font-mono);
-  color: var(--ink-faint);
-  font-size: var(--text-sm);
-  white-space: nowrap;
-  margin-left: auto;
-}
-
-.home_page-bio_age::before {
-  content: '(';
-}
-
-.home_page-bio_age::after {
-  content: ')';
-}
-
 .home_page-bio_desc {
   font-size: var(--text-base);
   line-height: var(--leading-base);

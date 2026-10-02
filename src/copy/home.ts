@@ -6,7 +6,6 @@ type TextLink = {
 
 export type BioEntry = {
   year: string
-  age: string
   parts: Array<string | TextLink>
   active?: boolean
 }
@@ -139,31 +138,26 @@ export const homeCopy: HomeCopy = {
     entries: [
       {
         year: '2002',
-        age: '0yo',
         parts: ['Born in Chișinău, Moldova ', { href: MAPS.chisinau, label: '[where?]', nosnippet: true }, '.'],
       },
-      { year: '2009', age: '7yo', parts: ['Started tinkering with Linux and custom Android ROMs.'] },
-      { year: '2016', age: '14yo', parts: ['Started coding in Python.'] },
+      { year: '2009', parts: ['Started tinkering with Linux and custom Android ROMs.'] },
+      { year: '2016', parts: ['Started coding in Python.'] },
       {
         year: '2017',
-        age: '15yo',
         parts: ['Implemented extreme Qubes OS opsec setup for a privacy-focused client.'],
       },
-      { year: '2018', age: '16yo', parts: ['Built a Unity mobile game.'] },
+      { year: '2018', parts: ['Built a Unity mobile game.'] },
       {
         year: '2019',
-        age: '17yo',
         parts: ['Secured a 6-month frontend contract with a governmental hosting provider in Kazakhstan.'],
       },
-      { year: '2020', age: '18yo', parts: ['Moved to Prague the morning after I became a legal adult.'] },
+      { year: '2020', parts: ['Moved to Prague the morning after I became a legal adult.'] },
       {
         year: '2021',
-        age: '18-21yo',
         parts: ['Developed Audi & Volkswagen assembly line planner apps + other enterprise IIoT systems.'],
       },
       {
         year: '2024',
-        age: '21yo',
         parts: [
           'Founded an ',
           { href: 'https://arcoin.net/', label: 'AR/Web3 startup' },
@@ -172,7 +166,6 @@ export const homeCopy: HomeCopy = {
       },
       {
         year: '2025',
-        age: '22yo',
         parts: [
           'Moved to Tashkent ',
           { href: MAPS.tashkent, label: '[where?]', nosnippet: true },
@@ -181,7 +174,6 @@ export const homeCopy: HomeCopy = {
       },
       {
         year: '2026',
-        age: '23yo',
         active: true,
         parts: [
           'Started using Neovim, btw. Optimizing my feedback loops with ',
