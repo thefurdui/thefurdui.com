@@ -1,7 +1,6 @@
 ---
 import RootLayout from '../layouts/RootLayout/RootLayout.astro'
 import Icon from '../components/Icon/Icon.astro'
-import ThemeToggle from '../components/ThemeToggle/ThemeToggle.astro'
 import { resume, formatBullet } from '../copy/resume'
 import webIcon from '~icons/mdi/earth?raw'
 import emailIcon from '~icons/mdi/email?raw'
@@ -43,13 +42,10 @@ const skillLabels: Record<string, string> = {
         <Icon content={backIcon} width="14" height="14" aria-hidden="true" />
         thefurdui.com
       </a>
-      <div class="l_cluster" data-gap="2">
-        <ThemeToggle />
-        <a class="resume_page-download" href="/andrei-furdui-resume.pdf" download="Andrei-Furdui-Resume.pdf">
-          <Icon content={downloadIcon} width="16" height="16" aria-hidden="true" />
-          download <span class="resume_page-file_type">.pdf</span>
-        </a>
-      </div>
+      <a class="resume_page-download" href="/andrei-furdui-resume.pdf" download="Andrei-Furdui-Resume.pdf">
+        <Icon content={downloadIcon} width="16" height="16" aria-hidden="true" />
+        download <span class="resume_page-file_type">.pdf</span>
+      </a>
     </nav>
 
     <div class="resume_page-preview" role="region" aria-label="US Letter resume preview">

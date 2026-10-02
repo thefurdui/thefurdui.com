@@ -22,13 +22,9 @@ export type HomeCopy = {
     title: string
     description: string
   }
-  ui: {
-    themeToggle: string
-  }
   hero: {
-    tag: string
     name: string
-    lead: string
+    role: string
   }
   beliefs: {
     title: string
@@ -93,15 +89,11 @@ export const homeCopy: HomeCopy = {
   meta: {
     title: 'Andrei Furdui · Product Engineer',
     description:
-      'I ship products fast. Ex-founder & former Volkswagen engineer. I build resilient, zero-bloat systems for startups.',
-  },
-  ui: {
-    themeToggle: 'Toggle theme',
+      'Product engineer. Ex-founder & former Volkswagen engineer. I build resilient, zero-bloat systems for startups.',
   },
   hero: {
-    tag: 'Product Engineer',
     name: 'Andrei Furdui',
-    lead: 'I ship products fast.',
+    role: 'product engineer',
   },
   beliefs: {
     title: 'Core Beliefs',

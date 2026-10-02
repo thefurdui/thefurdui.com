@@ -142,18 +142,6 @@
   padding-block: fluid(var(--space-16), var(--space-24));
 }
 
-.home_page-hero_tag {
-  color: var(--ink-muted);
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-}
-
-.home_page-hero_tag[data-variant='muted'] {
-  color: var(--ink-faint);
-}
-
 .home_page-title {
   color: var(--ink-main);
   font-family: var(--font-heading);
@@ -162,10 +150,12 @@
   line-height: var(--leading-none);
 }
 
-.home_page-hero_lead {
-  color: var(--ink-main);
-  font-size: fluid(var(--text-xl), var(--text-3xl));
-  line-height: var(--leading-tight);
+.home_page-role {
+  color: var(--ink-muted);
+  font-family: var(--font-body);
+  font-size: fluid(var(--text-base), var(--text-xl));
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-base);
 }
 
 /* CORE BELIEFS SECTION */

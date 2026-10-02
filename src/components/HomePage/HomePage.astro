@@ -1,5 +1,4 @@
 ---
-import ThemeToggle from '../ThemeToggle/ThemeToggle.astro'
 import type { HomeCopy } from '../../copy/home'
 import './HomePage.css'
 
@@ -15,16 +14,9 @@ const { copy: t } = Astro.props
     <!-- ===================== HERO ===================== -->
     <section class="home_page-section" data-section="hero">
       <div class="home_page-registration_mark_anchor" aria-hidden="true"></div>
-      <div class="l_stack" data-gap="8">
-        <div class="l_cluster" data-justify="between" data-gap="4" data-align="center">
-          <span class="home_page-hero_tag">{t.hero.tag}</span>
-          <ThemeToggle label={t.ui.themeToggle} />
-        </div>
-
-        <div class="l_stack" data-gap="5">
-          <h1 class="home_page-title">{t.hero.name}</h1>
-          <p class="home_page-hero_lead">{t.hero.lead}</p>
-        </div>
+      <div class="l_stack" data-gap="3">
+        <h1 class="home_page-title">{t.hero.name}</h1>
+        <p class="home_page-role">{t.hero.role}</p>
       </div>
     </section>
 
