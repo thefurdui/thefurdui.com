@@ -1,24 +1,17 @@
 ---
 import Icon from '../Icon/Icon.astro'
+import themeIcon from '~icons/ri/contrast-fill?raw'
 import './ThemeToggle.css'
-
-import lightModeIcon from '~icons/material-symbols/wb-sunny-outline?raw'
-import darkModeIcon from '~icons/material-symbols/dark-mode-outline?raw'
-
-interface Props {
-  label?: string
-}
-
-const { label = 'Toggle theme' } = Astro.props
 ---
 
-<button id="theme-toggle" class="theme_toggle u_reset_button u_pressable" type="button" aria-label={label}>
-  <span class="theme_toggle-icon" data-theme-icon="light">
-    <Icon content={lightModeIcon} width="20" height="20" aria-hidden="true" />
-  </span>
-  <span class="theme_toggle-icon" data-theme-icon="dark">
-    <Icon content={darkModeIcon} width="20" height="20" aria-hidden="true" />
-  </span>
+<button
+  class="theme_toggle u_reset_button"
+  type="button"
+  data-preference="auto"
+  aria-label="Theme: system. Switch to light theme."
+>
+  <Icon content={themeIcon} class="theme_toggle-icon" aria-hidden="true" focusable="false" />
+  <span class="theme_toggle-label">system</span>
 </button>
 
 <script src="./ThemeToggle.ts"></script>

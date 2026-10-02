@@ -1,4 +1,5 @@
 ---
+import ThemeToggle from '../ThemeToggle/ThemeToggle.astro'
 import type { HomeCopy } from '../../copy/home'
 import './HomePage.css'
 
@@ -159,4 +160,7 @@ const { copy: t } = Astro.props
       <div class="home_page-registration_mark_anchor" aria-hidden="true"></div>
     </section>
   </div>
+  <footer class="home_page-footer">
+    <ThemeToggle />
+  </footer>
 </div>

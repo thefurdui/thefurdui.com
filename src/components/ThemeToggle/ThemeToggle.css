@@ -1,18 +1,33 @@
 .theme_toggle {
-  position: relative;
+  --c-theme-angle: 0deg;
+  --c-hover-angle: 0deg;
+
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
+  gap: var(--space-2);
+  min-height: 2.75rem;
   color: var(--ink-muted);
-  border-radius: var(--radius-md);
-  transition: var(--transition-pressable);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  line-height: var(--leading-base);
+  transition: color var(--duration-fast) var(--ease-standard);
   cursor: pointer;
 }
 
-.theme_toggle:hover {
-  color: var(--ink-main);
+.theme_toggle[data-preference='dark'] {
+  --c-theme-angle: 180deg;
+}
+
+.theme_toggle[data-preference='auto'] {
+  --c-theme-angle: 90deg;
+}
+
+@media (hover: hover) {
+  .theme_toggle:hover {
+    --c-hover-angle: 180deg;
+
+    color: var(--ink-main);
+  }
 }
 
 .theme_toggle:focus-visible {
@@ -21,19 +36,16 @@
 }
 
 .theme_toggle-icon {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity var(--duration-fast) var(--ease-standard);
+  display: block;
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  rotate: calc(var(--c-theme-angle) + var(--c-hover-angle));
+  transition: rotate var(--duration-base) var(--ease-standard);
   pointer-events: none;
 }
 
-[data-theme='dark'] .theme_toggle-icon[data-theme-icon='light'] {
-  opacity: 1;
-}
-
-:root:not([data-theme='dark']) .theme_toggle-icon[data-theme-icon='dark'] {
-  opacity: 1;
+.theme_toggle-label {
+  min-width: 6ch;
+  text-align: left;
 }
