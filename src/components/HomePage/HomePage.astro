@@ -8,6 +8,14 @@ interface Props {
 }
 
 const { copy: t } = Astro.props
+
+// Astro evaluates this during each static build; UTC keeps build hosts consistent.
+const updatedAt = new Date()
+const updatedDate = new Intl.DateTimeFormat('en-GB', {
+  month: 'short',
+  year: 'numeric',
+  timeZone: 'UTC',
+}).format(updatedAt)
 ---
 
 <div class="home_page">
@@ -161,6 +169,11 @@ const { copy: t } = Astro.props
     </section>
   </div>
   <footer class="home_page-footer">
-    <ThemeToggle />
+    <div class="l_cluster" data-justify="between" data-gap="2" data-nowrap="true">
+      <ThemeToggle />
+      <p class="home_page-updated_at">
+        updated <time datetime={updatedAt.toISOString()}>{updatedDate}</time>
+      </p>
+    </div>
   </footer>
 </div>

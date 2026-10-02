@@ -335,6 +335,14 @@
   padding-block-start: var(--space-2);
 }
 
+.home_page-updated_at {
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  line-height: var(--leading-base);
+  text-align: right;
+}
+
 /* INLINE LINKS - anchors inside unclassed prose text (register + timeline) */
 .home_page-principle_text a,
 .home_page-bio_desc a {
