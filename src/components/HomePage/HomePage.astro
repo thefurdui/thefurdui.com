@@ -2,15 +2,14 @@
 import ThemeToggle from '../ThemeToggle/ThemeToggle.astro'
 import Icon from '../Icon/Icon.astro'
 import arrowTopRightIcon from '~icons/mdi/arrow-top-right?raw'
-import type { HomeCopy, Locale } from '../../copy/home'
+import type { HomeCopy } from '../../copy/home'
 import './HomePage.css'
 
 interface Props {
-  locale: Locale
   copy: HomeCopy
 }
 
-const { locale, copy: t } = Astro.props
+const { copy: t } = Astro.props
 ---
 
 <div class="home_page">
@@ -21,16 +20,7 @@ const { locale, copy: t } = Astro.props
       <div class="l_stack" data-gap="8">
         <div class="l_cluster" data-justify="between" data-gap="4" data-align="center">
           <span class="home_page-hero_tag">{t.hero.tag}</span>
-          <div class="l_cluster" data-gap="1" data-align="center" data-nowrap>
-            {
-              locale === 'ru' && (
-                <a class="home_page-locale_link" href="/" hreflang="en" lang="en">
-                  EN
-                </a>
-              )
-            }
-            <ThemeToggle label={t.ui.themeToggle} />
-          </div>
+          <ThemeToggle label={t.ui.themeToggle} />
         </div>
 
         <div class="l_stack" data-gap="5">

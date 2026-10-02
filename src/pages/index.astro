@@ -2,11 +2,8 @@
 import RootLayout from '../layouts/RootLayout/RootLayout.astro'
 import HomePage from '../components/HomePage/HomePage.astro'
 import { homeCopy } from '../copy/home'
-
-const locale = 'en'
-const copy = homeCopy[locale]
 ---
 
-<RootLayout lang={locale} title={copy.meta.title} description={copy.meta.description}>
-  <HomePage locale={locale} copy={copy} />
+<RootLayout title={homeCopy.meta.title} description={homeCopy.meta.description}>
+  <HomePage copy={homeCopy} />
 </RootLayout>
