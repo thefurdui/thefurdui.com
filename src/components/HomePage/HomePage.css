@@ -1,7 +1,7 @@
 /* CORE */
 .home_page {
   /* Component API (Layer 4) — local structural constants. */
-  --c-frame-max: 64rem;
+  --c-frame-max: 60rem;
   --c-frame-margin: max(
     calc(var(--c-page-padding) + calc(var(--js-scrollbar-width) / 2)),
     calc(calc(100vw - var(--c-frame-max)) / 2)
@@ -13,8 +13,8 @@
   --c-section-border: var(--c-hairline) solid var(--border-base);
 
   min-height: 100dvh;
-  padding: var(--c-page-padding);
-  padding-block-end: var(--space-2);
+  padding-inline: var(--c-page-padding);
+  padding-block: fluid(var(--space-4), var(--space-16)) var(--space-2);
   color: var(--ink-main);
 }
 
