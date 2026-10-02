@@ -9,6 +9,7 @@
     "dev": "astro dev",
     "build": "astro build && node scripts/export-resume.mjs",
     "resume:pdf": "pnpm run build",
+    "og:image": "astro build && node scripts/export-og-image.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

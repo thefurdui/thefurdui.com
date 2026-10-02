@@ -1,7 +1,6 @@
 import { writeFile } from 'node:fs/promises'
-import { fileURLToPath } from 'node:url'
 import { preview } from 'astro'
-import { chromium } from 'playwright-core'
+import { launchBrowser } from './browser.mjs'
 
 // Export the built route, so the downloadable document uses the same copy,
 // typography, icons and links as the web preview. No PDF renderer in the client.
@@ -9,23 +8,7 @@ const server = await preview({ server: { host: '127.0.0.1', port: 0 } })
 let browser
 
 try {
-  let launchOptions = { channel: 'chrome' }
-  if (process.env.CHROME_PATH) {
-    launchOptions = { executablePath: process.env.CHROME_PATH }
-  } else if (process.platform === 'linux' && process.arch === 'x64') {
-    // Pages builds run on Linux x64. This package supplies headless Chromium
-    // without requiring a system Chrome installation or root access.
-    const { default: headlessChromium, inflate, setupLambdaEnvironment } = await import('@sparticuz/chromium')
-    // Outside Lambda the package does not extract its shared libraries itself.
-    // Supply them here too, so the build does not need OS package installation.
-    const runtimePath = await inflate(fileURLToPath(new URL('../bin/al2023.tar.br', import.meta.resolve('@sparticuz/chromium'))))
-    setupLambdaEnvironment(`${runtimePath}/lib`)
-    launchOptions = {
-      args: headlessChromium.args,
-      executablePath: await headlessChromium.executablePath(),
-    }
-  }
-  browser = await chromium.launch(launchOptions)
+  browser = await launchBrowser()
   const page = await browser.newPage()
   const errors = []
   page.on('pageerror', (error) => errors.push(error.message))

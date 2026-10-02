@@ -1,0 +1,46 @@
+/* Composition for the social card; typography and marks inherit the page CSS. */
+.home_page {
+  --c-frame-max: 71rem;
+  --c-page-padding: var(--space-8);
+}
+
+.home_page-section[data-section='hero'] {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  height: 566px;
+  padding: var(--space-10);
+}
+
+.home_page-title {
+  font-size: var(--text-8xl);
+}
+
+.home_page-role {
+  font-size: var(--text-3xl);
+}
+
+.home_page-registration_mark_anchor::before,
+.home_page-registration_mark_anchor::after {
+  /* Chromium rounds the position of a centered 1px background tile. Paint
+     centered hard stops inside full-size gradients to retain half-pixel edges. */
+  background-image:
+    linear-gradient(
+      to bottom,
+      transparent calc(50% - var(--c-hairline) / 2),
+      var(--c-mark-color) 0,
+      var(--c-mark-color) calc(50% + var(--c-hairline) / 2),
+      transparent 0
+    ),
+    linear-gradient(
+      to right,
+      transparent calc(50% - var(--c-hairline) / 2),
+      var(--c-mark-color) 0,
+      var(--c-mark-color) calc(50% + var(--c-hairline) / 2),
+      transparent 0
+    );
+  background-size: 100% 100%;
+  background-origin: content-box;
+  background-clip: content-box;
+}

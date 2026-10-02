@@ -26,3 +26,12 @@ To check the generated download locally, run `pnpm build` followed by
 The PDF's `X-Robots-Tag: noindex, follow` response header is configured in
 `public/_headers`. Astro copies this file into `dist/` for Cloudflare Pages to
 apply after deployment; Astro's local preview server does not apply these rules.
+
+Run `pnpm og:image` to build the current homepage and regenerate
+`public/og-image.png` (also copied to `dist/`). Commit the PNG together with its
+source changes. The exporter uses the homepage's copy, fonts, tokens, and
+registration marks, with the social-card composition in `scripts/og-image.css`.
+It renders at 2400 × 1260 and checks that all four crosses occupy the same pixel
+rows and columns as the frame before saving. Full-size gradients avoid Chromium's
+rounding of centered 1px background tiles. It shares the PDF exporter's browser
+setup and closes its browser and preview server when finished.
