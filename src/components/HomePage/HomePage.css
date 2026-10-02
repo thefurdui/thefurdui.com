@@ -188,111 +188,37 @@
 }
 
 /* SELECTED WORK SECTION */
-.home_page-work_list {
+.home_page-work_link {
+  --c-work-ink: var(--ink-main);
+
   display: grid;
-  grid-template-columns: 1fr;
-}
-
-.work_card {
-  /* Small-canvas chrome: a stacked strip. Larger canvases reassign these. */
-  --c-edge-right: var(--c-hairline) solid var(--border-base);
-  --c-edge-bottom: 0;
-
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-  padding: var(--space-5);
-  background: var(--bg-surface);
-  border-top: var(--c-hairline) solid var(--border-base);
-  border-right: var(--c-edge-right);
-  border-bottom: var(--c-edge-bottom);
-  border-left: var(--c-hairline) solid var(--border-base);
-  border-radius: 0;
-}
-
-.work_card:last-child {
-  --c-edge-bottom: var(--c-hairline) solid var(--border-base);
-}
-
-.work_card:hover:before {
-  content: '';
-  position: absolute;
-  pointer-events: none;
-  inset: calc(-1 * var(--c-hairline));
-  border: var(--c-hairline) solid var(--border-focus);
-  z-index: var(--z-pinned);
-}
-
-.work_card:has(.work_card-link:focus-visible) {
-  outline: 2px solid var(--border-focus);
-  outline-offset: -2px;
-}
-
-.work_card-index {
-  color: var(--ink-faint);
-  font-family: var(--font-mono);
-  font-size: var(--text-sm);
-  letter-spacing: 0.05em;
-}
-
-.work_card-tag {
-  color: var(--ink-muted);
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  white-space: nowrap;
-}
-
-.work_card-title {
-  color: var(--ink-main);
-  font-size: var(--text-lg);
-  font-weight: var(--weight-semibold);
-  line-height: var(--leading-tight);
-}
-
-.work_card-link {
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-1);
+  padding-block: var(--space-3);
   color: inherit;
   text-decoration: none;
 }
 
-.work_card-link::after {
-  content: '';
-  position: absolute;
-  inset: 0;
+.home_page-work_link:hover {
+  --c-work-ink: var(--action-primary);
 }
 
-.work_card-link:focus-visible {
-  outline: none;
+.home_page-work_link:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 4px;
 }
 
-.work_card-desc {
-  color: var(--ink-muted);
-  font-size: var(--text-sm);
+.home_page-work_title {
+  color: var(--c-work-ink);
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
   line-height: var(--leading-base);
 }
 
-.work_card-host {
-  color: var(--ink-faint);
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-}
-
-.work_card-arrow {
-  flex-shrink: 0;
-  color: var(--ink-faint);
-  font-size: var(--text-sm);
-  transition: transform var(--duration-fast) var(--ease-enter);
-}
-
-.work_card:hover .work_card-index {
+.home_page-work_description {
   color: var(--ink-muted);
-}
-
-.work_card:hover .work_card-arrow {
-  color: var(--action-primary);
-  transform: translate(0.125rem, -0.125rem);
+  font-size: var(--text-sm);
+  line-height: var(--leading-base);
 }
 
 /* BIO SECTION */
@@ -442,21 +368,10 @@
 }
 
 @media (min-width: 48rem) {
-  .home_page-work_list {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .work_card {
-    --c-edge-right: 0;
-    --c-edge-bottom: 0;
-  }
-
-  .work_card:nth-child(3n) {
-    --c-edge-right: var(--c-hairline) solid var(--border-base);
-  }
-
-  .work_card:nth-last-child(-n + 3) {
-    --c-edge-bottom: var(--c-hairline) solid var(--border-base);
+  .home_page-work_link {
+    grid-template-columns: 12rem minmax(0, 1fr);
+    column-gap: var(--space-8);
+    align-items: baseline;
   }
 }
 

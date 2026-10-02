@@ -1,7 +1,5 @@
 ---
 import ThemeToggle from '../ThemeToggle/ThemeToggle.astro'
-import Icon from '../Icon/Icon.astro'
-import arrowTopRightIcon from '~icons/mdi/arrow-top-right?raw'
 import type { HomeCopy } from '../../copy/home'
 import './HomePage.css'
 
@@ -67,44 +65,26 @@ const { copy: t } = Astro.props
           </div>
         </header>
 
-        <div class="home_page-work_list">
+        <ul class="home_page-work_list u_reset_list" role="list">
           {
-            t.work.items.map((item) => (
-              <article class="work_card">
-                <div class="l_cluster" data-justify="between" data-gap="2" data-align="start">
-                  <span class="work_card-index" data-nosnippet>
-                    {item.index}
-                  </span>
-                  <span class="work_card-tag" data-nosnippet>
-                    {item.tag}
-                  </span>
-                </div>
-                <div class="l_stack" data-gap="2">
-                  <h3 class="work_card-title">
-                    <a class="work_card-link" target="_blank" href={item.href}>
-                      {item.title}
-                    </a>
+            t.work.items.map((item, index) => (
+              <li>
+                <a
+                  class="home_page-work_link"
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener"
+                  aria-labelledby={`work-title-${index}`}
+                >
+                  <h3 class="home_page-work_title" id={`work-title-${index}`}>
+                    {item.title}
                   </h3>
-                  <p class="work_card-desc">{item.description}</p>
-                </div>
-                <div class="l_spacer"></div>
-                <div class="l_cluster" data-justify="between" data-gap="2">
-                  <span class="work_card-host u_truncate" data-nosnippet>
-                    {item.host}
-                  </span>
-                  <Icon
-                    content={arrowTopRightIcon}
-                    class="work_card-arrow"
-                    width="1em"
-                    height="1em"
-                    aria-hidden="true"
-                    data-nosnippet
-                  />
-                </div>
-              </article>
+                  <p class="home_page-work_description">{item.description}</p>
+                </a>
+              </li>
             ))
           }
-        </div>
+        </ul>
       </div>
     </section>
 

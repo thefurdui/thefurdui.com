@@ -12,11 +12,8 @@ export type BioEntry = {
 }
 
 export type WorkItem = {
-  index: string
-  tag: string
   title: string
   href: string
-  host: string
   description: string
 }
 
@@ -60,46 +57,28 @@ const MAPS = {
 
 const WORK = {
   lode: {
-    index: '01',
-    tag: 'SaaS',
     title: 'Lode Ecosystem',
     href: 'https://lode.my',
-    host: 'lode.my',
   },
   arcoin: {
-    index: '02',
-    tag: 'AR · Web3',
     title: 'ARCOIN',
     href: 'https://arcoin.net',
-    host: 'arcoin.net',
+  },
+  studio: {
+    title: 'furdui studio',
+    href: 'https://furdui.studio',
   },
   beam: {
-    index: '03',
-    tag: 'OSS',
     title: 'BEAM CSS',
     href: 'https://beamcss.org',
-    host: 'beamcss.org',
   },
   hap: {
-    index: '04',
-    tag: 'OSS · CLI',
     title: 'hap',
     href: 'https://github.com/thefurdui/hap',
-    host: 'github.com/thefurdui/hap',
-  },
-  wic: {
-    index: '05',
-    tag: 'OSS · CLI',
-    title: 'wic',
-    href: 'https://github.com/thefurdui/wic',
-    host: 'github.com/thefurdui/wic',
   },
   audi: {
-    index: '06',
-    tag: 'Enterprise',
     title: 'Audi DPA',
     href: 'https://www.saboit.de/references/audi-dpa',
-    host: 'saboit.de',
   },
 } as const
 
@@ -139,29 +118,27 @@ export const homeCopy: HomeCopy = {
     items: [
       {
         ...WORK.lode,
-        description: 'A suite of apps for meticulous self-quantification. You are what you measure.',
+        description: 'Self-quantification suite for time and finance tracking.',
       },
       {
         ...WORK.arcoin,
-        description: 'A geolocation-based AR metaverse. Peak scale: 120k MAU.',
+        description: 'Location-based AR. 122k monthly active users at peak.',
+      },
+      {
+        ...WORK.studio,
+        description: 'My studio. A journey through Saturn’s system in ASCII and Three.js.',
       },
       {
         ...WORK.beam,
-        description: 'A strict, semantic, browser-native CSS architecture. The antidote to Atomic CSS and CSS-in-JS.',
+        description: 'A semantic, browser-native CSS architecture.',
       },
       {
         ...WORK.hap,
-        description:
-          'A CLI tool to orchestrate parallel AI agents across different Git branches within the same repo.',
-      },
-      {
-        ...WORK.wic,
-        description: 'A CLI tool to compile wide-gamut (Display P3) web assets natively via headless Chromium.',
+        description: 'Parallel coding agents across Git worktrees.',
       },
       {
         ...WORK.audi,
-        description:
-          'Enterprise IIoT infrastructure. An assembly line and resource planner built for Audi and Volkswagen factories.',
+        description: 'Assembly-line and resource planning for Audi and Volkswagen.',
       },
     ],
   },
