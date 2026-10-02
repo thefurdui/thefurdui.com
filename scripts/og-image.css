@@ -18,7 +18,7 @@
 }
 
 .home_page-role {
-  font-size: var(--text-3xl);
+  font-size: var(--text-5xl);
 }
 
 .home_page-registration_mark_anchor::before,

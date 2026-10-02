@@ -154,7 +154,7 @@
 .home_page-role {
   color: var(--ink-muted);
   font-family: var(--font-body);
-  font-size: fluid(var(--text-base), var(--text-xl));
+  font-size: fluid(var(--text-lg), var(--text-2xl));
   font-weight: var(--weight-regular);
   line-height: var(--leading-base);
 }
